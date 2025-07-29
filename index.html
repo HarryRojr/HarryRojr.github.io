@@ -1,96 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HarryRojr</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      background-color: #111;
-      color: white;
-      text-align: center;
-      padding: 2rem;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HarryRojr - The Best About Me</title>
+    <!-- Tailwind CSS CDN for modern utility styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Pacifico for display, Rosemary for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Rosemary&display=swap" rel="stylesheet">
+    <!-- Material Icons for social icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Rosemary', cursive; /* Changed to Rosemary */
+            background-color: #0A0A0A; /* Deeper dark background */
+            color: #E0E0E0; /* Soft white text */
+            text-align: center;
+            padding-top: 5rem; /* Space for fixed header */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 3rem;
-      color: orange;
-      margin-bottom: 2rem;
-    }
+        /* Header / Navigation Bar */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1A1A1A; /* Darker header background */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+            z-index: 1000;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    h2 {
-      color: orange;
-      margin-top: 2.5rem;
-    }
+        .site-title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.2rem; /* Adjusted size for header */
+            color: #FF9800; /* Vibrant orange accent */
+            margin: 0;
+            line-height: 1;
+        }
 
-    p {
-      max-width: 800px;
-      margin: 0.8rem auto;
-      line-height: 1.6;
-    }
+        .nav-tabs {
+            display: flex;
+            gap: 1.5rem; /* Space between tabs */
+        }
 
-    footer {
-      margin-top: 3rem;
-      color: orange;
-      font-weight: bold;
-    }
+        .nav-tab-button {
+            background: none;
+            border: none;
+            padding: 0.5rem 0;
+            font-family: 'Rosemary', cursive; /* Changed to Rosemary */
+            font-size: 1rem;
+            font-weight: 600;
+            color: #E0E0E0;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s ease-in-out;
+        }
 
-    nav {
-      position: fixed;
-      top: 0;
-      right: 0;
-      padding: 1rem;
-    }
+        .nav-tab-button::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background-color: #FF9800; /* Orange underline */
+            transition: width 0.3s ease-in-out;
+        }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 0.9rem;
-    }
+        .nav-tab-button:hover::after {
+            width: 100%;
+        }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
-  </style>
+        .nav-tab-button.active {
+            color: #FF9800; /* Active tab color */
+        }
+
+        .nav-tab-button.active::after {
+            width: 100%;
+        }
+
+        /* Main Content Styling */
+        .content-container {
+            max-width: 900px; /* Wider content area */
+            width: 100%;
+            padding: 2rem;
+            margin-top: 2rem; /* Additional space below header */
+            margin-bottom: 2rem;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .content-section {
+            background-color: #1A1A1A; /* Dark card background */
+            border-radius: 12px; /* Rounded corners for sections */
+            padding: 2.5rem;
+            margin-bottom: 2.5rem; /* Space between sections */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow for cards */
+            text-align: left; /* Align text left within sections */
+            opacity: 0; /* Hidden by default */
+            transform: translateY(20px); /* Slight animation for entry */
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .content-section.active {
+            display: block; /* Ensure it's block for layout */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-section h2 {
+            font-family: 'Rosemary', cursive; /* Changed to Rosemary */
+            font-size: 2rem; /* Larger headings */
+            font-weight: 700;
+            color: #FF9800; /* Orange headings */
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(255, 152, 0, 0.3); /* Subtle orange underline */
+            padding-bottom: 0.5rem;
+            display: inline-block; /* To make border-bottom only under text */
+        }
+
+        .content-section p {
+            font-size: 1.1rem; /* Slightly larger body text */
+            line-height: 1.8;
+            color: #CCCCCC; /* Lighter grey for body text */
+            margin-bottom: 1rem;
+        }
+
+        /* Socials Section Specifics */
+        .socials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid */
+            gap: 1.5rem;
+            margin-top: 2rem;
+            justify-items: center; /* Center items in grid cells */
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background-color: #2A2A2A; /* Darker background for social blocks */
+            border-radius: 10px;
+            text-decoration: none;
+            color: #E0E0E0;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            background-color: #3A3A3A; /* Slightly lighter on hover */
+        }
+
+        .social-icon {
+            font-size: 3.5rem; /* Large icons */
+            color: #FF9800; /* Orange icons */
+            margin-bottom: 0.5rem;
+        }
+
+        .social-link-label {
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Rosemary', cursive; /* Changed to Rosemary */
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding: 1.5rem;
+            color: #FF9800;
+            font-weight: bold;
+            font-size: 1.1rem;
+            background-color: #1A1A1A;
+            width: 100%;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+            font-family: 'Rosemary', cursive; /* Changed to Rosemary */
+        }
+
+        /* Utility classes for hiding/showing content */
+        .hidden-content {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="socials.html">Socials</a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Love life</a>
-  </nav>
+    <header class="main-header">
+        <h1 class="site-title">HarryRojr</h1>
+        <nav class="nav-tabs">
+            <button class="nav-tab-button active" data-target="about-me-section">Home</button>
+            <button class="nav-tab-button" data-target="socials-section">Socials</button>
+            <button class="nav-tab-button" data-target="love-life-section">Love Life</button>
+        </nav>
+    </header>
 
-  <h1>HarryRojr</h1>
+    <main class="content-container">
+        <!-- About Me Section -->
+        <div id="about-me-section" class="content-section active">
+            <h2>About me:</h2>
+            <p>
+                I'm Harry Rojr {HA-ree RO-jer}, the guy who's got more gamertags than a Minecraft villager has trades! I'm everywhere—Xbox, PlayStation, EA, Ubisoft, Roblox, you name it. My life’s a 24/7 LAN party, minus the stale pizza (I prefer snacks with flavor). I'm sniping in Call of Duty, sailing the seas and stealing the Chests of Fortune, and parkouring through Assassin’s Creed like it’s my day job. Whether it’s clutch moments in Battlefield or trolling in Among Us, I’m the MVP you didn’t see coming and Currently, I’m serving up L’s in Sea of Thieves and making people ragequit in TEKKEN 8. I'm nice in general tho! ;)
+            </p>
 
-  <h2>About me:</h2>
-  <p>
-    I'm Harry Rojr {HA-ree RO-jer}, the guy who's got more gamertags than a Minecraft villager has trades! I'm everywhere—Xbox, PlayStation, EA, Ubisoft, Roblox, you name it. My life’s a 24/7 LAN party, minus the stale pizza (I prefer snacks with flavor). I'm sniping in Call of Duty, sailing the seas and stealing the Chests of Fortune, and parkouring through Assassin’s Creed like it’s my day job. Whether it’s clutch moments in Battlefield or trolling in Among Us, I’m the MVP you didn’t see coming and Currently, I’m serving up L’s in Sea of Thieves and making people ragequit in TEKKEN 8. I'm nice in general tho! ;)
-  </p>
+            <h2>Videos & Anime Obsession:</h2>
+            <p>
+                When I’m not mashing buttons, I’m glued to YouTube or Crunchyroll, soaking in videos and anime like a sponge in a pixelated ocean. My watch history? A wild mix of Let’s Play videos, speedrunning fails, and anime so epic it makes my controller cry. I’ve binged Attack on Titan faster than you can say “Titan yeet", even tho it was boring at first (I slept through the two whole seasons. But hey, the ending makes it all better). Whether it’s a 3-hour long movies or binging the entire seasons of different shows, I’m here for it. Peep my faves and join my anime marathon (popcorn not included)!
+            </p>
 
-  <h2>Videos & Anime Obsession:</h2>
-  <p>
-    When I’m not mashing buttons, I’m glued to YouTube or Crunchyroll, soaking in videos and anime like a sponge in a pixelated ocean. My watch history? A wild mix of Let’s Play videos, speedrunning fails, and anime so epic it makes my controller cry. I’ve binged Attack on Titan faster than you can say “Titan yeet", even tho it was boring at first (I slept through the two whole seasons. But hey, the ending makes it all better). Whether it’s a 3-hour long movies or binging the entire seasons of different shows, I’m here for it. Peep my faves and join my anime marathon (popcorn not included)!
-  </p>
+            <h2>Music Addiction:</h2>
+            <p>
+                If I’m not gaming or watching anime, I’ve got tunes blasting louder than a Fortnite rocket launch. Music’s my mana, keeping me powered up through 3 a.m. gaming sessions and anime marathons. My playlist? A chaotic mix of Hyped up Bass drops for clutch moments, lo-fi beats for rainy nights, and Bass that hit right in the feels. From Ed Sheeran to Sia, I’m vibing harder than a creeper at a rave. Always listening to music on Spotify!
+            </p>
 
-  <h2>Music Addiction:</h2>
-  <p>
-    If I’m not gaming or watching anime, I’ve got tunes blasting louder than a Fortnite rocket launch. Music’s my mana, keeping me powered up through 3 a.m. gaming sessions and anime marathons. My playlist? A chaotic mix of Hyped up Bass drops for clutch moments, lo-fi beats for rainy nights, and Bass that hit right in the feels. From Ed Sheeran to Sia, I’m vibing harder than a creeper at a rave. Always listening to music on Spotify!
-  </p>
+            <h2>Connect with me:</h2>
+            <p>
+                Wanna squad up, talk anime or movies, or roast my playlist? I’m everywhere, like a glitch in the Matrix. Hit me up on Xbox, PlayStation, Twitter(X) or Reddit, but don’t expect me to go easy on you in-game—I’m as ruthless as a Dark Souls invader.
+            </p>
+        </div>
 
-  <h2>Connect with me:</h2>
-  <p>
-    Wanna squad up, talk anime or movies, or roast my playlist? I’m everywhere, like a glitch in the Matrix. Hit me up on Xbox, PlayStation, Twitter(X) or Reddit, but don’t expect me to go easy on you in-game—I’m as ruthless as a Dark Souls invader.
-  </p>
+        <!-- Socials Section -->
+        <div id="socials-section" class="content-section hidden-content">
+            <h2 class="text-center">Find Me Online!</h2>
+            <div class="socials-grid">
+                <a href="#" class="social-link">
+                    <i class="material-icons social-icon">gamepad</i>
+                    <span class="social-link-label">Xbox</span>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="material-icons social-icon">play_circle_filled</i>
+                    <span class="social-link-label">PlayStation</span>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="material-icons social-icon">code</i>
+                    <span class="social-link-label">EA/Ubisoft</span>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="material-icons social-icon">videogame_asset</i>
+                    <span class="social-link-label">Roblox</span>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="material-icons social-icon">local_fire_department</i>
+                    <span class="social-link-label">Twitter(X)</span>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="material-icons social-icon">forum</i>
+                    <span class="social-link-label">Reddit</span>
+                </a>
+            </div>
+        </div>
 
-  <footer>
-    Thank for reading, Have a Wonderful Day!
-  </footer>
+        <!-- Love Life Section -->
+        <div id="love-life-section" class="content-section hidden-content">
+            <h2 class="text-center">My Love Life (Top Secret!)</h2>
+            <p class="text-center text-gray-400">
+                This section is currently empty, as my love life is as mysterious as a hidden achievement in a new game. Stay tuned for future updates, or maybe not! 😉
+            </p>
+            <p class="text-center text-gray-400 mt-4">
+                (Psst... check the "Love Life" tab in the header again if you're feeling brave!)
+            </p>
+        </div>
+    </main>
 
+    <footer>
+        Thank for reading, Have a Wonderful Day!
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navButtons = document.querySelectorAll('.nav-tab-button');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            function showSection(targetId) {
+                // Remove 'active' class from all nav buttons and add 'hidden-content' to all sections
+                navButtons.forEach(button => button.classList.remove('active'));
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                    section.classList.add('hidden-content'); // Ensure it's hidden for JS-disabled fallback
+                });
+
+                // Add 'active' class to the clicked button
+                const clickedButton = document.querySelector(`.nav-tab-button[data-target="${targetId}"]`);
+                if (clickedButton) {
+                    clickedButton.classList.add('active');
+                }
+
+                // Show the target section and remove 'hidden-content'
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.remove('hidden-content');
+                    // Trigger reflow to ensure transition plays
+                    void targetSection.offsetWidth;
+                    targetSection.classList.add('active');
+                }
+            }
+
+            // Add click event listeners to navigation buttons
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.dataset.target;
+                    // Handle the special "Love Life" link
+                    if (targetId === 'love-life-section') {
+                        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+                    } else {
+                        showSection(targetId);
+                    }
+                });
+            });
+
+            // Set initial active section (Home) on page load
+            showSection('about-me-section');
+        });
+    </script>
 </body>
 </html>
