@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/983468890849939617/1399681305851199549/uQuF8p.png?ex=6889e24c&is=688890cc&hm=a46bbc9f9f2a2162502de4d5794362e555770e21d590821752d944a32623d8e2&">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HarryRojr - The Best About Me</title>
+    <title>HarryRojr</title>
     <!-- Tailwind CSS CDN for modern utility styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Pacifico for display, Rosemary for body -->
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Rosemary&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Material Icons for social icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         /* Global Styles */
         body {
             margin: 0;
-            font-family: 'Rosemary', cursive; /* Changed to Rosemary */
-            background-color: #0A0A0A; /* Deeper dark background */
-            color: #E0E0E0; /* Soft white text */
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0A;
+            color: #E0E0E0;
             text-align: center;
-            padding-top: 5rem; /* Space for fixed header */
+            padding-top: 5rem;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            /* Remove: position: relative; */
         }
 
         /* Header / Navigation Bar */
@@ -31,8 +34,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #1A1A1A; /* Darker header background */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+            background-color: #1A1A1A;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             padding: 0.75rem 1.5rem;
             display: flex;
@@ -41,23 +44,23 @@
         }
 
         .site-title {
-            font-family: 'Pacifico', cursive;
-            font-size: 2.2rem; /* Adjusted size for header */
-            color: #FF9800; /* Vibrant orange accent */
+            font-family: 'Pacifico', cursive; /* Keep title as Pacifico */
+            font-size: 2.2rem;
+            color: #ff7171;
             margin: 0;
             line-height: 1;
         }
 
         .nav-tabs {
             display: flex;
-            gap: 1.5rem; /* Space between tabs */
+            gap: 1.5rem;
         }
 
         .nav-tab-button {
             background: none;
             border: none;
             padding: 0.5rem 0;
-            font-family: 'Rosemary', cursive; /* Changed to Rosemary */
+            font-family: 'Inter', sans-serif; /* Changed to Inter */
             font-size: 1rem;
             font-weight: 600;
             color: #E0E0E0;
@@ -74,7 +77,7 @@
             transform: translateX(-50%);
             width: 0;
             height: 3px;
-            background-color: #FF9800; /* Orange underline */
+            background-color: #FF7171; /* Orange underline */
             transition: width 0.3s ease-in-out;
         }
 
@@ -83,7 +86,7 @@
         }
 
         .nav-tab-button.active {
-            color: #FF9800; /* Active tab color */
+            color: #FF7171; /* Active tab color */
         }
 
         .nav-tab-button.active::after {
@@ -92,6 +95,7 @@
 
         /* Main Content Styling */
         .content-container {
+            flex:1 0 auto; /* Allow content to grow and fill space */
             max-width: 900px; /* Wider content area */
             width: 100%;
             padding: 2rem;
@@ -118,15 +122,16 @@
             transform: translateY(0);
         }
 
-        .content-section h2 {
-            font-family: 'Rosemary', cursive; /* Changed to Rosemary */
-            font-size: 2rem; /* Larger headings */
+       .content-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
             font-weight: 700;
-            color: #FF9800; /* Orange headings */
+            color: #FF7171;
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid rgba(255, 152, 0, 0.3); /* Subtle orange underline */
+            border-bottom: 2px solid rgba(255, 113, 113, 0.3);
             padding-bottom: 0.5rem;
-            display: inline-block; /* To make border-bottom only under text */
+            display: inline-block;
+            letter-spacing: 1px;
         }
 
         .content-section p {
@@ -151,12 +156,13 @@
             align-items: center;
             justify-content: center;
             padding: 1rem;
-            background-color: #2A2A2A; /* Darker background for social blocks */
+            background-color: #2A2A2A;
             border-radius: 10px;
             text-decoration: none;
             color: #E0E0E0;
             transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer; /* <-- Add this line */
         }
 
         .social-link:hover {
@@ -166,27 +172,28 @@
 
         .social-icon {
             font-size: 3.5rem; /* Large icons */
-            color: #FF9800; /* Orange icons */
+            color: #FF7171; /* Orange icons */
             margin-bottom: 0.5rem;
         }
 
         .social-link-label {
             font-size: 1rem;
             font-weight: 600;
-            font-family: 'Rosemary', cursive; /* Changed to Rosemary */
+            font-family: 'Inter', sans-serif; /* Changed to Inter */
         }
 
         /* Footer */
         footer {
-            margin-top: 4rem;
-            padding: 1.5rem;
-            color: #FF9800;
-            font-weight: bold;
-            font-size: 1.1rem;
-            background-color: #1A1A1A;
-            width: 100%;
-            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
-            font-family: 'Rosemary', cursive; /* Changed to Rosemary */
+        margin-top: 4rem;
+        padding: 1.5rem;
+        color: #FF7171;
+        font-weight: bold;
+        font-size: 1.1rem;
+        background-color: #1A1A1A;
+        width: 100%;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+        font-family: 'Inter', sans-serif;
+        /* Remove: position: fixed; left: 0; bottom: 0; */
         }
 
         /* Utility classes for hiding/showing content */
@@ -209,22 +216,78 @@
     <main class="content-container">
         <!-- About Me Section -->
         <div id="about-me-section" class="content-section active">
-            <h2>About me:</h2>
+            <h2 id="about-me-heading" style="cursor:pointer;">About me:</h2>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const aboutMeHeading = document.getElementById('about-me-heading');
+                if (aboutMeHeading) {
+                    aboutMeHeading.addEventListener('click', function() {
+                        const originalText = aboutMeHeading.textContent;
+                        aboutMeHeading.textContent = "Yes, It's really about me";
+                        setTimeout(() => {
+                            aboutMeHeading.textContent = originalText;
+                        }, 2000);
+                    });
+                }
+            });
+            </script>
             <p>
                 I'm Harry Rojr {HA-ree RO-jer}, the guy who's got more gamertags than a Minecraft villager has trades! I'm everywhere—Xbox, PlayStation, EA, Ubisoft, Roblox, you name it. My life’s a 24/7 LAN party, minus the stale pizza (I prefer snacks with flavor). I'm sniping in Call of Duty, sailing the seas and stealing the Chests of Fortune, and parkouring through Assassin’s Creed like it’s my day job. Whether it’s clutch moments in Battlefield or trolling in Among Us, I’m the MVP you didn’t see coming and Currently, I’m serving up L’s in Sea of Thieves and making people ragequit in TEKKEN 8. I'm nice in general tho! ;)
             </p>
 
-            <h2>Videos & Anime Obsession:</h2>
+            <h2 id="videos-anime-heading" style="cursor:pointer;">Videos & Anime Obsession:</h2>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const videosAnimeHeading = document.getElementById('videos-anime-heading');
+                if (videosAnimeHeading) {
+                    videosAnimeHeading.addEventListener('click', function() {
+                        const originalText = videosAnimeHeading.textContent;
+                        videosAnimeHeading.textContent = "I haven't slept for days cuz of that y'know";
+                        setTimeout(() => {
+                            videosAnimeHeading.textContent = originalText;
+                        }, 2500);
+                    });
+                }
+            });
+            </script>
             <p>
                 When I’m not mashing buttons, I’m glued to YouTube or Crunchyroll, soaking in videos and anime like a sponge in a pixelated ocean. My watch history? A wild mix of Let’s Play videos, speedrunning fails, and anime so epic it makes my controller cry. I’ve binged Attack on Titan faster than you can say “Titan yeet", even tho it was boring at first (I slept through the two whole seasons. But hey, the ending makes it all better). Whether it’s a 3-hour long movies or binging the entire seasons of different shows, I’m here for it. Peep my faves and join my anime marathon (popcorn not included)!
             </p>
 
-            <h2>Music Addiction:</h2>
+            <h2 id="music-addiction-heading" style="cursor:pointer;">Music Addiction:</h2>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const musicHeading = document.getElementById('music-addiction-heading');
+                if (musicHeading) {
+                    musicHeading.addEventListener('click', function() {
+                        const originalText = musicHeading.textContent;
+                        musicHeading.textContent = "I'm such an addict, send help!";
+                        setTimeout(() => {
+                            musicHeading.textContent = originalText;
+                        }, 2000);
+                    });
+                }
+            });
+            </script>
             <p>
                 If I’m not gaming or watching anime, I’ve got tunes blasting louder than a Fortnite rocket launch. Music’s my mana, keeping me powered up through 3 a.m. gaming sessions and anime marathons. My playlist? A chaotic mix of Hyped up Bass drops for clutch moments, lo-fi beats for rainy nights, and Bass that hit right in the feels. From Ed Sheeran to Sia, I’m vibing harder than a creeper at a rave. Always listening to music on Spotify!
             </p>
 
-            <h2>Connect with me:</h2>
+            <h2 id="connect-with-me-heading" style="cursor:pointer;">Connect with me:</h2>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const connectHeading = document.getElementById('connect-with-me-heading');
+                if (connectHeading) {
+                    connectHeading.addEventListener('click', function() {
+                        const originalText = connectHeading.textContent;
+                        connectHeading.textContent = "I can see you, you little stalker ;)";
+                        setTimeout(() => {
+                            connectHeading.textContent = originalText;
+                        }, 2000);
+                    });
+                }
+            });
+            </script>
             <p>
                 Wanna squad up, talk anime or movies, or roast my playlist? I’m everywhere, like a glitch in the Matrix. Hit me up on Xbox, PlayStation, Twitter(X) or Reddit, but don’t expect me to go easy on you in-game—I’m as ruthless as a Dark Souls invader.
             </p>
@@ -232,31 +295,83 @@
 
         <!-- Socials Section -->
         <div id="socials-section" class="content-section hidden-content">
-            <h2 class="text-center">Find Me Online!</h2>
+            <h2 class="text-center cursor-pointer" id="find-me-online-heading">Find Me Online!</h2>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const heading = document.getElementById('find-me-online-heading');
+                if (heading) {
+                    heading.addEventListener('click', function() {
+                        const originalText = heading.textContent;
+                        heading.textContent = "I'm everywhere";
+                        setTimeout(() => {
+                            heading.textContent = originalText;
+                        }, 2000);
+                    });
+                }
+            });
+            </script>
             <div class="socials-grid">
-                <a href="#" class="social-link">
+                <a href="https://www.xbox.com/en-US/play/user/HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
                     <i class="material-icons social-icon">gamepad</i>
                     <span class="social-link-label">Xbox</span>
                 </a>
-                <a href="#" class="social-link">
-                    <i class="material-icons social-icon">play_circle_filled</i>
-                    <span class="social-link-label">PlayStation</span>
-                </a>
-                <a href="#" class="social-link">
-                    <i class="material-icons social-icon">code</i>
-                    <span class="social-link-label">EA/Ubisoft</span>
-                </a>
-                <a href="#" class="social-link">
-                    <i class="material-icons social-icon">videogame_asset</i>
-                    <span class="social-link-label">Roblox</span>
-                </a>
-                <a href="#" class="social-link">
+                <details>
+                    <summary style="cursor:pointer; list-style:none;">
+                        <div class="social-link" style="display:flex; flex-direction:column; align-items:center;">
+                            <i class="material-icons social-icon">sports_esports</i>
+                            <span class="social-link-label">PlayStation</span>
+                        </div>
+                    </summary>
+                    <div style="margin-top:0.5rem; color:#e0d8d8; text-align:center;">
+                        Username: <strong>HarryRojr</strong>
+                    </div>
+                </details>
+                <details>
+                    <summary style="cursor:pointer; list-style:none;">
+                        <div class="social-link" style="display:flex; flex-direction:column; align-items:center;">
+                            <i class="material-icons social-icon">sports_motorsports</i>
+                            <span class="social-link-label">EA & Ubisoft</span>
+                        </div>
+                    </summary>
+                    <div style="margin-top:0.5rem; color:#e0d8d8; text-align:center;">
+                        EA: <strong>theHarry</strong><br>
+                        Ubisoft: <strong>HarryRojr</strong>
+                    </div>
+                </details>
+                <a href="https://x.com/HarryRojr/" class="social-link" target="_blank" rel="noopener noreferrer">
                     <i class="material-icons social-icon">local_fire_department</i>
                     <span class="social-link-label">Twitter(X)</span>
                 </a>
-                <a href="#" class="social-link">
+                <a href="https://www.reddit.com/user/HarryRojr/" class="social-link" target="_blank" rel="noopener noreferrer">
                     <i class="material-icons social-icon">forum</i>
                     <span class="social-link-label">Reddit</span>
+                </a>
+                    <a href="https://open.spotify.com/user/27mruhq25lv2pvek3hs2ksi0t?si=b5e9fd6a937642cc" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FF7171" width="56" height="56">
+                        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.29 14.42a.75.75 0 0 1-1.03.23c-2.82-1.73-6.38-2.12-10.57-1.17a.75.75 0 1 1-.32-1.47c4.54-1 8.47-.57 11.6 1.29a.75.75 0 0 1 .22 1.12zm1.47-2.7a.94.94 0 0 1-1.29.29c-3.23-2-8.17-2.59-11.98-1.43a.94.94 0 1 1-.54-1.81c4.23-1.27 9.57-.62 13.2 1.62.44.27.58.85.29 1.33zm.13-2.82C15.1 9.1 8.9 8.93 5.77 9.86a1.13 1.13 0 1 1-.65-2.18c3.57-1.07 10.44-.88 14.36 1.8a1.13 1.13 0 0 1-1.19 1.92z"/>
+                        </svg>
+                    <span class="social-link-label">Spotify</span>
+                </a>
+                <a href="https://www.youtube.com/@itsTheHR" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <i class="material-icons social-icon">video_library</i>
+                    <span class="social-link-label">YouTube</span>
+                </a>
+                <a href="https://www.twitch.tv/HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <i class="material-icons social-icon">live_tv</i>
+                    <span class="social-link-label">Twitch</span>
+                </a>
+                <details>
+                    <summary class="social-link" style="display:flex; flex-direction:column; align-items:center;">
+                        <i class="material-icons social-icon">chat</i>
+                        <span class="social-link-label">Discord</span>
+                    </summary>
+                    <div style="margin-top:0.5rem; color:#e0d8d8; text-align:center;">
+                        Username: <strong>itsTheHR</strong>
+                    </div>
+                </details>
+                <a href="https://steamcommunity.com/id/HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <i class="material-icons social-icon">computer</i>
+                    <span class="social-link-label">Steam</span>
                 </a>
             </div>
         </div>
@@ -273,8 +388,8 @@
         </div>
     </main>
 
-    <footer>
-        Thank for reading, Have a Wonderful Day!
+    <footer id="site-footer" class="text-center cursor-pointer" style="cursor:pointer;">
+        Thanks for reading, Have a Wonderful Day!
     </footer>
 
     <script>
@@ -323,5 +438,13 @@
             showSection('about-me-section');
         });
     </script>
+    <script>
+    document.getElementById('site-footer').addEventListener('click', function() {
+        this.textContent = "Yayyy 🎉";
+        setTimeout(() => {
+            this.textContent = "Thanks for reading, Have a Wonderful Day!";
+        }, 2000); // Change back after 2 seconds
+    });
+</script>
 </body>
 </html>
