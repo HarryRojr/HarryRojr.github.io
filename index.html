@@ -5,15 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HarryRojr</title>
-    <!-- Tailwind CSS CDN for modern utility styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Pacifico for display, Rosemary for body -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Material Icons for social icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
-        /* Global Styles */
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
@@ -25,10 +21,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Remove: position: relative; */
         }
 
-        /* Header / Navigation Bar */
         .main-header {
             position: fixed;
             top: 0;
@@ -44,7 +38,7 @@
         }
 
         .site-title {
-            font-family: 'Pacifico', cursive; /* Keep title as Pacifico */
+            font-family: 'Pacifico', cursive; 
             font-size: 2.2rem;
             color: #ff7171;
             margin: 0;
@@ -60,7 +54,7 @@
             background: none;
             border: none;
             padding: 0.5rem 0;
-            font-family: 'Inter', sans-serif; /* Changed to Inter */
+            font-family: 'Inter', sans-serif; 
             font-size: 1rem;
             font-weight: 600;
             color: #E0E0E0;
@@ -77,7 +71,7 @@
             transform: translateX(-50%);
             width: 0;
             height: 3px;
-            background-color: #FF7171; /* Orange underline */
+            background-color: #FF7171; 
             transition: width 0.3s ease-in-out;
         }
 
@@ -86,38 +80,37 @@
         }
 
         .nav-tab-button.active {
-            color: #FF7171; /* Active tab color */
+            color: #FF7171; 
         }
 
         .nav-tab-button.active::after {
             width: 100%;
         }
 
-        /* Main Content Styling */
         .content-container {
-            flex:1 0 auto; /* Allow content to grow and fill space */
-            max-width: 900px; /* Wider content area */
+            flex:1 0 auto; 
+            max-width: 900px; 
             width: 100%;
             padding: 2rem;
-            margin-top: 2rem; /* Additional space below header */
+            margin-top: 2rem;
             margin-bottom: 2rem;
-            box-sizing: border-box; /* Include padding in width */
+            box-sizing: border-box;
         }
 
         .content-section {
-            background-color: #1A1A1A; /* Dark card background */
-            border-radius: 12px; /* Rounded corners for sections */
+            background-color: #1A1A1A;
+            border-radius: 12px; 
             padding: 2.5rem;
-            margin-bottom: 2.5rem; /* Space between sections */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow for cards */
-            text-align: left; /* Align text left within sections */
-            opacity: 0; /* Hidden by default */
-            transform: translateY(20px); /* Slight animation for entry */
+            margin-bottom: 2.5rem; 
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); 
+            text-align: left;
+            opacity: 0; 
+            transform: translateY(20px);
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
 
         .content-section.active {
-            display: block; /* Ensure it's block for layout */
+            display: block; 
             opacity: 1;
             transform: translateY(0);
         }
@@ -135,19 +128,18 @@
         }
 
         .content-section p {
-            font-size: 1.1rem; /* Slightly larger body text */
+            font-size: 1.1rem; 
             line-height: 1.8;
-            color: #CCCCCC; /* Lighter grey for body text */
+            color: #CCCCCC; 
             margin-bottom: 1rem;
         }
 
-        /* Socials Section Specifics */
         .socials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid */
             gap: 1.5rem;
             margin-top: 2rem;
-            justify-items: center; /* Center items in grid cells */
+            justify-items: center; 
         }
 
         .social-link {
@@ -162,27 +154,26 @@
             color: #E0E0E0;
             transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer; /* <-- Add this line */
+            cursor: pointer; 
         }
 
         .social-link:hover {
-            transform: translateY(-5px); /* Lift effect on hover */
-            background-color: #3A3A3A; /* Slightly lighter on hover */
+            transform: translateY(-5px); 
+            background-color: #3A3A3A; 
         }
 
         .social-icon {
-            font-size: 3.5rem; /* Large icons */
-            color: #FF7171; /* Orange icons */
+            font-size: 3.5rem; 
+            color: #FF7171; 
             margin-bottom: 0.5rem;
         }
 
         .social-link-label {
             font-size: 1rem;
             font-weight: 600;
-            font-family: 'Inter', sans-serif; /* Changed to Inter */
+            font-family: 'Inter', sans-serif; 
         }
 
-        /* Footer */
         footer {
         margin-top: 4rem;
         padding: 1.5rem;
@@ -193,10 +184,8 @@
         width: 100%;
         box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
         font-family: 'Inter', sans-serif;
-        /* Remove: position: fixed; left: 0; bottom: 0; */
         }
 
-        /* Utility classes for hiding/showing content */
         .hidden-content {
             display: none;
         }
@@ -214,7 +203,6 @@
     </header>
 
     <main class="content-container">
-        <!-- About Me Section -->
         <div id="about-me-section" class="content-section active">
             <h2 id="about-me-heading" style="cursor:pointer;">About me:</h2>
             <script>
@@ -293,7 +281,6 @@
             </p>
         </div>
 
-        <!-- Socials Section -->
         <div id="socials-section" class="content-section hidden-content">
             <h2 class="text-center cursor-pointer" id="find-me-online-heading">Find Me Online!</h2>
             <script>
@@ -375,7 +362,6 @@
             </div>
         </div>
 
-        <!-- Love Life Section -->
         <div id="love-life-section" class="content-section hidden-content">
             <h2 class="text-center">My Love Life (Top Secret!)</h2>
             <p class="text-center text-gray-400">
@@ -397,34 +383,28 @@
             const contentSections = document.querySelectorAll('.content-section');
 
             function showSection(targetId) {
-                // Remove 'active' class from all nav buttons and add 'hidden-content' to all sections
                 navButtons.forEach(button => button.classList.remove('active'));
                 contentSections.forEach(section => {
                     section.classList.remove('active');
-                    section.classList.add('hidden-content'); // Ensure it's hidden for JS-disabled fallback
+                    section.classList.add('hidden-content'); 
                 });
 
-                // Add 'active' class to the clicked button
                 const clickedButton = document.querySelector(`.nav-tab-button[data-target="${targetId}"]`);
                 if (clickedButton) {
                     clickedButton.classList.add('active');
                 }
 
-                // Show the target section and remove 'hidden-content'
                 const targetSection = document.getElementById(targetId);
                 if (targetSection) {
                     targetSection.classList.remove('hidden-content');
-                    // Trigger reflow to ensure transition plays
                     void targetSection.offsetWidth;
                     targetSection.classList.add('active');
                 }
             }
 
-            // Add click event listeners to navigation buttons
             navButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const targetId = this.dataset.target;
-                    // Handle the special "Love Life" link
                     if (targetId === 'love-life-section') {
                         window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
                     } else {
@@ -433,7 +413,6 @@
                 });
             });
 
-            // Set initial active section (Home) on page load
             showSection('about-me-section');
         });
     </script>
@@ -442,7 +421,7 @@
         this.textContent = "Yayyy 🎉";
         setTimeout(() => {
             this.textContent = "Thanks for reading, Have a Wonderful Day!";
-        }, 2000); // Change back after 2 seconds
+        }, 2000); 
     });
 </script>
 </body>
