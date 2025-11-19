@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/HarryRojr/HarryRojr.github.io/refs/heads/main/Pixel.png">
+    <link rel="icon" type="image/x-icon"
+        href="https://raw.githubusercontent.com/HarryRojr/HarryRojr.github.io/refs/heads/main/assets/HR.ico">
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HarryRojr</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&family=Dancing+Script:wght@700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('https://raw.githubusercontent.com/HarryRojr/HarryRojr.github.io/refs/heads/main/assets/font1.ttf');
+        }
+
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: #0A0A0A;
-            color: #E0E0E0;
+            font-family: 'CustomFont', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
             text-align: center;
             padding-top: 5rem;
             min-height: 100vh;
@@ -28,8 +40,9 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #1A1A1A;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            background-color: #000000;
+            border-bottom: 1px solid #ff0000;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.1);
             z-index: 1000;
             padding: 0.75rem 1.5rem;
             display: flex;
@@ -38,11 +51,12 @@
         }
 
         .site-title {
-            font-family: 'Pacifico', cursive; 
+            font-family: 'Pacifico', cursive;
             font-size: 2.2rem;
-            color: #ff7171;
+            color: #ff0000;
             margin: 0;
             line-height: 1;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
 
         .nav-tabs {
@@ -54,10 +68,10 @@
             background: none;
             border: none;
             padding: 0.5rem 0;
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Inter', sans-serif;
             font-size: 1rem;
             font-weight: 600;
-            color: #E0E0E0;
+            color: #ffffff;
             cursor: pointer;
             position: relative;
             transition: color 0.3s ease-in-out;
@@ -71,8 +85,9 @@
             transform: translateX(-50%);
             width: 0;
             height: 3px;
-            background-color: #FF7171; 
+            background-color: #ff0000;
             transition: width 0.3s ease-in-out;
+            box-shadow: 0 0 8px #ff0000;
         }
 
         .nav-tab-button:hover::after {
@@ -80,7 +95,8 @@
         }
 
         .nav-tab-button.active {
-            color: #FF7171; 
+            color: #ff0000;
+            text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
         }
 
         .nav-tab-button.active::after {
@@ -88,8 +104,8 @@
         }
 
         .content-container {
-            flex:1 0 auto; 
-            max-width: 900px; 
+            flex: 1 0 auto;
+            max-width: 900px;
             width: 100%;
             padding: 2rem;
             margin-top: 2rem;
@@ -98,48 +114,50 @@
         }
 
         .content-section {
-            background-color: #1A1A1A;
-            border-radius: 12px; 
+            background-color: #0a0a0a;
+            border: 1px solid #330000;
+            border-radius: 12px;
             padding: 2.5rem;
-            margin-bottom: 2.5rem; 
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); 
+            margin-bottom: 2.5rem;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
             text-align: left;
-            opacity: 0; 
+            opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
 
         .content-section.active {
-            display: block; 
+            display: block;
             opacity: 1;
             transform: translateY(0);
         }
 
-       .content-section h2 {
+        .content-section h2 {
             font-family: 'Dancing Script', cursive;
             font-size: 2rem;
             font-weight: 700;
-            color: #FF7171;
+            color: #ff0000;
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid rgba(255, 113, 113, 0.3);
+            border-bottom: 2px solid #ff0000;
             padding-bottom: 0.5rem;
             display: inline-block;
             letter-spacing: 1px;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
         }
 
         .content-section p {
-            font-size: 1.1rem; 
+            font-size: 1.1rem;
             line-height: 1.8;
-            color: #CCCCCC; 
+            color: #e0e0e0;
             margin-bottom: 1rem;
         }
 
         .socials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid */
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
-            justify-items: center; 
+            justify-items: center;
         }
 
         .social-link {
@@ -148,53 +166,224 @@
             align-items: center;
             justify-content: center;
             padding: 1rem;
-            background-color: #2A2A2A;
+            background-color: #000000;
+            border: 1px solid #330000;
             border-radius: 10px;
             text-decoration: none;
-            color: #E0E0E0;
-            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer; 
+            color: #ffffff;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
         }
 
         .social-link:hover {
-            transform: translateY(-5px); 
-            background-color: #3A3A3A; 
+            transform: translateY(-5px);
+            background-color: #1a0000;
+            border-color: #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
         }
 
         .social-icon {
-            font-size: 3.5rem; 
-            color: #FF7171; 
+            font-size: 3.5rem;
+            color: #ff0000;
             margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
         }
 
         .social-link-label {
             font-size: 1rem;
             font-weight: 600;
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Inter', sans-serif;
         }
 
         footer {
-        margin-top: 4rem;
-        padding: 1.5rem;
-        color: #FF7171;
-        font-weight: bold;
-        font-size: 1.1rem;
-        background-color: #1A1A1A;
-        width: 100%;
-        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
-        font-family: 'Inter', sans-serif;
+            margin-top: 4rem;
+            padding: 1.5rem;
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 1.1rem;
+            background-color: #000000;
+            width: 100%;
+            border-top: 1px solid #330000;
         }
 
         .hidden-content {
             display: none;
         }
+
+        /* Cozy Music Player */
+        .music-player-container {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .music-player-card {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 0, 0, 0.6);
+            min-width: 320px;
+            z-index: 9999;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        /* Hidden state keeps it in DOM but moves it offscreen */
+        .music-player-card.hidden {
+            transform: translate(-50px, 50px) scale(0.8);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .show-player-btn {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ff0000;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+            z-index: 9998;
+            cursor: pointer;
+        }
+
+        .track-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .track-title {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .track-artist {
+            color: #ff4d4d;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:hover {
+            background: #ff0000;
+            color: #000;
+            transform: scale(1.15);
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 70px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #ff0000;
+            border-radius: 50%;
+        }
+
+        .progress-bar {
+            -webkit-appearance: none;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #ff0000;
+            border-radius: 50%;
+        }
+
+        .hide-btn,
+        .show-player-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .hide-btn:hover,
+        .show-player-btn:hover {
+            color: #fff;
+        }
+
+        .show-player-btn {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ff0000;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
     </style>
 </head>
+
 <body>
 
     <header class="main-header">
-        <h1 class="site-title">HarryRojr</h1>
+        <h1 class="site-title"
+            style="font-size: 3.0rem; transition: transform 0.3s ease; cursor: default; user-select: none; -webkit-user-select: none;"
+            onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">HarryRojr</h1>
         <nav class="nav-tabs">
             <button class="nav-tab-button active" data-target="about-me-section">Home</button>
             <button class="nav-tab-button" data-target="socials-section">Socials</button>
@@ -206,106 +395,157 @@
         <div id="about-me-section" class="content-section active">
             <h2 id="about-me-heading" style="cursor:pointer;">About me:</h2>
             <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const aboutMeHeading = document.getElementById('about-me-heading');
-                if (aboutMeHeading) {
-                    aboutMeHeading.addEventListener('click', function() {
-                        const originalText = aboutMeHeading.textContent;
-                        aboutMeHeading.textContent = "Yes, It's really about me";
-                        setTimeout(() => {
-                            aboutMeHeading.textContent = originalText;
-                        }, 2000);
+                document.addEventListener('DOMContentLoaded', () => {
+                    const music = document.getElementById('bg-music');
+                    const playPauseBtn = document.getElementById('play-pause-btn');
+                    const volumeSlider = document.getElementById('volume-slider');
+                    const progressBar = document.getElementById('progress-bar');
+                    const hideBtn = document.getElementById('hide-player-btn');
+                    const showBtn = document.getElementById('show-player-btn');
+                    const musicCard = document.getElementById('music-card');
+                    const playIcon = playPauseBtn.querySelector('i');
+
+                    music.volume = 0.2;
+
+                    playPauseBtn.addEventListener('click', () => {
+                        if (music.paused) {
+                            music.play().then(() => playIcon.textContent = 'pause').catch(() => { });
+                        } else {
+                            music.pause();
+                            playIcon.textContent = 'play_arrow';
+                        }
                     });
-                }
-            });
+
+                    volumeSlider.addEventListener('input', () => music.volume = volumeSlider.value);
+
+                    hideBtn.addEventListener('click', () => {
+                        musicCard.style.display = 'none';
+                        showBtn.style.display = 'flex';
+                    });
+
+                    showBtn.addEventListener('click', () => {
+                        musicCard.style.display = 'flex';
+                        showBtn.style.display = 'none';
+                    });
+
+                    // Update progress bar
+                    music.addEventListener('timeupdate', () => {
+                        const progress = (music.currentTime / music.duration) * 100;
+                        progressBar.value = progress || 0;
+                    });
+
+                    // Seek functionality
+                    progressBar.addEventListener('input', () => {
+                        music.currentTime = (progressBar.value / 100) * music.duration;
+                    });
+                });
             </script>
             <p>
-                I’m Harry Rojr — a human in body, a gamer at heart. I'm everywhere—Xbox, PlayStation, EA, Ubisoft, Roblox, you name it. My life’s a 24/7 LAN party, minus the stale pizza (I prefer snacks with flavor). I'm sniping in Call of Duty, sailing the seas and stealing the Chests of Fortune, and parkouring through Assassin’s Creed like it’s my day job. Whether it’s clutch moments in Battlefield or trolling in Among Us, I’m the MVP you didn’t see coming and Currently, I’m serving up L’s in Sea of Thieves and making people ragequit in TEKKEN 8. I'm nice in general tho! ;)
+                I’m Harry Rojr — a human in body, a gamer at heart. I'm everywhere—Xbox, PlayStation, EA, Ubisoft,
+                Roblox, you name it. My life’s a 24/7 LAN party, minus the stale pizza (I prefer snacks with flavor).
+                I'm sniping in Call of Duty, sailing the seas and stealing the Chests of Fortune, and parkouring through
+                Assassin’s Creed like it’s my day job. Whether it’s clutch moments in Battlefield or trolling in Among
+                Us, I’m the MVP you didn’t see coming and Currently, I’m serving up L’s in Sea of Thieves and making
+                people ragequit in TEKKEN 8. I'm nice in general tho! ;)
             </p>
 
             <h2 id="videos-anime-heading" style="cursor:pointer;">Videos & Anime Obsession:</h2>
             <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const videosAnimeHeading = document.getElementById('videos-anime-heading');
-                if (videosAnimeHeading) {
-                    videosAnimeHeading.addEventListener('click', function() {
-                        const originalText = videosAnimeHeading.textContent;
-                        videosAnimeHeading.textContent = "I haven't slept for days cuz of that y'know";
-                        setTimeout(() => {
-                            videosAnimeHeading.textContent = originalText;
-                        }, 2500);
-                    });
-                }
-            });
+                document.addEventListener('DOMContentLoaded', function () {
+                    const videosAnimeHeading = document.getElementById('videos-anime-heading');
+                    if (videosAnimeHeading) {
+                        videosAnimeHeading.addEventListener('click', function () {
+                            const originalText = videosAnimeHeading.textContent;
+                            videosAnimeHeading.textContent = "I haven't slept for days cuz of that y'know";
+                            setTimeout(() => {
+                                videosAnimeHeading.textContent = originalText;
+                            }, 2500);
+                        });
+                    }
+                });
             </script>
             <p>
-                When I’m not mashing buttons, I’m glued to YouTube or Crunchyroll, soaking in videos and anime like a sponge in a pixelated ocean. My watch history? A wild mix of Let’s Play videos, speedrunning fails, and anime so epic it makes my controller cry. I’ve binged Attack on Titan faster than you can say “Titan yeet", even tho it was boring at first (I slept through the two whole seasons. But hey, the ending makes it all better). Whether it’s a 3-hour long movies or binging the entire seasons of different shows, I’m here for it. Peep my faves and join my anime marathon (popcorn not included)!
+                When I’m not mashing buttons, I’m glued to YouTube or Crunchyroll, soaking in videos and anime like a
+                sponge in a pixelated ocean. My watch history? A wild mix of Let’s Play videos, speedrunning fails, and
+                anime so epic it makes my controller cry. I’ve binged Attack on Titan faster than you can say “Titan
+                yeet", even tho it was boring at first (I slept through the two whole seasons. But hey, the ending makes
+                it all better). Whether it’s a 3-hour long movies or binging the entire seasons of different shows, I’m
+                here for it. Peep my faves and join my anime marathon (popcorn not included)!
             </p>
 
             <h2 id="music-addiction-heading" style="cursor:pointer;">Music Addiction:</h2>
             <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const musicHeading = document.getElementById('music-addiction-heading');
-                if (musicHeading) {
-                    musicHeading.addEventListener('click', function() {
-                        const originalText = musicHeading.textContent;
-                        musicHeading.textContent = "I'm such an addict, send help!";
-                        setTimeout(() => {
-                            musicHeading.textContent = originalText;
-                        }, 2000);
-                    });
-                }
-            });
+                document.addEventListener('DOMContentLoaded', function () {
+                    const musicHeading = document.getElementById('music-addiction-heading');
+                    if (musicHeading) {
+                        musicHeading.addEventListener('click', function () {
+                            const originalText = musicHeading.textContent;
+                            musicHeading.textContent = "I'm such an addict, send help!";
+                            setTimeout(() => {
+                                musicHeading.textContent = originalText;
+                            }, 2000);
+                        });
+                    }
+                });
             </script>
             <p>
-                If I’m not gaming or watching anime, I’ve got tunes blasting louder than a Fortnite rocket launch. Music’s my mana, keeping me powered up through 3 a.m. gaming sessions and anime marathons. My playlist? A chaotic mix of Hyped up Bass drops for clutch moments, lo-fi beats for rainy nights, and Bass that hit right in the feels. From Ed Sheeran to Sia, I’m vibing harder than a creeper at a rave. Always listening to music on Spotify!
+                If I’m not gaming or watching anime, I’ve got tunes blasting louder than a Fortnite rocket launch.
+                Music’s my mana, keeping me powered up through 3 a.m. gaming sessions and anime marathons. My playlist?
+                A chaotic mix of Hyped up Bass drops for clutch moments, lo-fi beats for rainy nights, and Bass that hit
+                right in the feels. From Ed Sheeran to Sia, I’m vibing harder than a creeper at a rave. Always listening
+                to music on Spotify!
             </p>
 
             <h2 id="connect-with-me-heading" style="cursor:pointer;">Connect with me:</h2>
             <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const connectHeading = document.getElementById('connect-with-me-heading');
-                if (connectHeading) {
-                    connectHeading.addEventListener('click', function() {
-                        const originalText = connectHeading.textContent;
-                        connectHeading.textContent = "I can see you, you little stalker ;)";
-                        setTimeout(() => {
-                            connectHeading.textContent = originalText;
-                        }, 2000);
-                    });
-                }
-            });
+                document.addEventListener('DOMContentLoaded', function () {
+                    const connectHeading = document.getElementById('connect-with-me-heading');
+                    if (connectHeading) {
+                        connectHeading.addEventListener('click', function () {
+                            const originalText = connectHeading.textContent;
+                            connectHeading.textContent = "I can see you, you little stalker ;)";
+                            setTimeout(() => {
+                                connectHeading.textContent = originalText;
+                            }, 2000);
+                        });
+                    }
+                });
             </script>
             <p>
-                Wanna squad up, talk anime or movies, or roast my playlist? I’m everywhere, like a glitch in the Matrix. Hit me up on Xbox, PlayStation, Twitter(X) or Reddit, but don’t expect me to go easy on you in-game—I’m as ruthless as a Dark Souls invader.
+                Wanna squad up, talk anime or movies, or roast my playlist? I’m everywhere, like a glitch in the Matrix.
+                Hit me up on Xbox, PlayStation, Twitter(X) or Reddit, but don’t expect me to go easy on you in-game—I’m
+                as ruthless as a Dark Souls invader.
             </p>
         </div>
 
         <div id="socials-section" class="content-section hidden-content">
             <h2 class="text-center cursor-pointer" id="find-me-online-heading">Find Me Online!</h2>
             <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const heading = document.getElementById('find-me-online-heading');
-                if (heading) {
-                    heading.addEventListener('click', function() {
-                        const originalText = heading.textContent;
-                        heading.textContent = "I'm everywhere";
-                        setTimeout(() => {
-                            heading.textContent = originalText;
-                        }, 2000);
-                    });
-                }
-            });
+                document.addEventListener('DOMContentLoaded', function () {
+                    const heading = document.getElementById('find-me-online-heading');
+                    if (heading) {
+                        heading.addEventListener('click', function () {
+                            const originalText = heading.textContent;
+                            heading.textContent = "I'm everywhere";
+                            setTimeout(() => {
+                                heading.textContent = originalText;
+                            }, 2000);
+                        });
+                    }
+                });
             </script>
             <div class="socials-grid">
-                <a href="https://www.xbox.com/en-US/play/user/HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
-                    <i class="material-icons social-icon">gamepad</i>
+                <a href="https://www.xbox.com/en-US/play/user/HarryRojr" class="social-link" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Xbox_one_logo.svg" alt="Xbox Logo"
+                        class="social-icon" style="width: 56px; height: 56px;">
                     <span class="social-link-label">Xbox</span>
                 </a>
                 <details>
                     <summary style="cursor:pointer; list-style:none;">
                         <div class="social-link" style="display:flex; flex-direction:column; align-items:center;">
-                            <i class="material-icons social-icon">sports_esports</i>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/PlayStation_logo.svg"
+                                alt="PlayStation Logo" class="social-icon" style="width: 56px; height: 56px;">
                             <span class="social-link-label">PlayStation</span>
                         </div>
                     </summary>
@@ -316,7 +556,8 @@
                 <details>
                     <summary style="cursor:pointer; list-style:none;">
                         <div class="social-link" style="display:flex; flex-direction:column; align-items:center;">
-                            <i class="material-icons social-icon">sports_motorsports</i>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Epic_Games_logo.svg"
+                                alt="Epic Games Logo" class="social-icon" style="width: 56px; height: 56px;">
                             <span class="social-link-label">Epic Games</span>
                         </div>
                     </summary>
@@ -325,38 +566,47 @@
                     </div>
                 </details>
                 <a href="https://x.com/HarryRojr/" class="social-link" target="_blank" rel="noopener noreferrer">
-                    <i class="material-icons social-icon">local_fire_department</i>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/1200px-Logo_of_Twitter.svg.png"
+                        alt="X Logo" class="social-icon" style="width: 56px; height: 56px; filter: invert(1);">
                     <span class="social-link-label">Twitter(X)</span>
                 </a>
-                <a href="https://www.reddit.com/user/HarryRojr/" class="social-link" target="_blank" rel="noopener noreferrer">
-                    <i class="material-icons social-icon">forum</i>
+                <a href="https://www.reddit.com/user/HarryRojr/" class="social-link" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Reddit_Logo_Icon.svg" alt="Reddit Logo"
+                        class="social-icon" style="width: 56px; height: 56px;">
                     <span class="social-link-label">Reddit</span>
                 </a>
-                    <a href="https://open.spotify.com/user/27mruhq25lv2pvek3hs2ksi0t?si=b5e9fd6a937642cc" class="social-link" target="_blank" rel="noopener noreferrer">
-                        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FF7171" width="56" height="56">
-                        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.29 14.42a.75.75 0 0 1-1.03.23c-2.82-1.73-6.38-2.12-10.57-1.17a.75.75 0 1 1-.32-1.47c4.54-1 8.47-.57 11.6 1.29a.75.75 0 0 1 .22 1.12zm1.47-2.7a.94.94 0 0 1-1.29.29c-3.23-2-8.17-2.59-11.98-1.43a.94.94 0 1 1-.54-1.81c4.23-1.27 9.57-.62 13.2 1.62.44.27.58.85.29 1.33zm.13-2.82C15.1 9.1 8.9 8.93 5.77 9.86a1.13 1.13 0 1 1-.65-2.18c3.57-1.07 10.44-.88 14.36 1.8a1.13 1.13 0 0 1-1.19 1.92z"/>
-                        </svg>
+                <a href="https://open.spotify.com/user/27mruhq25lv2pvek3hs2ksi0t?si=b5e9fd6a937642cc"
+                    class="social-link" target="_blank" rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
+                        alt="Spotify Logo" class="social-icon" style="width: 56px; height: 56px;">
                     <span class="social-link-label">Spotify</span>
                 </a>
-                <a href="https://www.youtube.com/@HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
-                    <i class="material-icons social-icon">video_library</i>
+                <a href="https://www.youtube.com/@HarryRojr" class="social-link" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"
+                        alt="YouTube Logo" class="social-icon" style="width: 56px; height: 56px;">
                     <span class="social-link-label">YouTube</span>
                 </a>
                 <a href="https://www.twitch.tv/HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
-                    <i class="material-icons social-icon">live_tv</i>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Twitch_Glitch_Logo_Purple.svg"
+                        alt="Twitch Logo" class="social-icon" style="width: 56px; height: 56px;">
                     <span class="social-link-label">Twitch</span>
                 </a>
                 <details>
                     <summary class="social-link" style="display:flex; flex-direction:column; align-items:center;">
-                        <i class="material-icons social-icon">chat</i>
+                        <img src="https://preview.redd.it/old-discord-logo-feeling-old-yet-v0-7enta5v0houc1.png?auto=webp&s=780eba64b34cc77e01abc8c0f9cc031a9801f441"
+                            alt="Discord Logo" class="social-icon" style="width: 56px; height: 56px;">
                         <span class="social-link-label">Discord</span>
                     </summary>
                     <div style="margin-top:0.5rem; color:#e0d8d8; text-align:center;">
                         Username: <strong>itsTheHR</strong>
                     </div>
                 </details>
-                <a href="https://steamcommunity.com/id/HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
-                    <i class="material-icons social-icon">computer</i>
+                <a href="https://steamcommunity.com/id/HarryRojr" class="social-link" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam Logo"
+                        class="social-icon" style="width: 56px; height: 56px;">
                     <span class="social-link-label">Steam</span>
                 </a>
             </div>
@@ -365,7 +615,8 @@
         <div id="love-life-section" class="content-section hidden-content">
             <h2 class="text-center">My Love Life (Top Secret!)</h2>
             <p class="text-center text-gray-400">
-                This section is currently empty, as my love life is as mysterious as a hidden achievement in a new game. Stay tuned for future updates, or maybe not! 😉
+                This section is currently empty, as my love life is as mysterious as a hidden achievement in a new game.
+                Stay tuned for future updates, or maybe not! 😉
             </p>
             <p class="text-center text-gray-400 mt-4">
                 (Psst... check the "Love Life" tab in the header again if you're feeling brave!)
@@ -378,7 +629,7 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const navButtons = document.querySelectorAll('.nav-tab-button');
             const contentSections = document.querySelectorAll('.content-section');
 
@@ -386,7 +637,7 @@
                 navButtons.forEach(button => button.classList.remove('active'));
                 contentSections.forEach(section => {
                     section.classList.remove('active');
-                    section.classList.add('hidden-content'); 
+                    section.classList.add('hidden-content');
                 });
 
                 const clickedButton = document.querySelector(`.nav-tab-button[data-target="${targetId}"]`);
@@ -403,7 +654,7 @@
             }
 
             navButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     const targetId = this.dataset.target;
                     if (targetId === 'love-life-section') {
                         window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
@@ -417,12 +668,105 @@
         });
     </script>
     <script>
-    document.getElementById('site-footer').addEventListener('click', function() {
-        this.textContent = "Yayyy 🎉";
-        setTimeout(() => {
-            this.textContent = "Thanks for reading, Have a Wonderful Day!";
-        }, 2000); 
-    });
-</script>
+        document.getElementById('site-footer').addEventListener('click', function () {
+            this.textContent = "Yayyy 🎉";
+            setTimeout(() => {
+                this.textContent = "Thanks for reading, Have a Wonderful Day!";
+            }, 2000);
+        });
+    </script>
+
+    <!-- Cozy Music Player Overlay -->
+    <div class="music-player-container">
+        <div id="music-card" class="music-player-card">
+            <div class="track-info">
+                <div class="track-title">Snowfall</div>
+                <div class="track-artist">Neheart x Reidenshi</div>
+            </div>
+            <div class="player-controls">
+                <button id="play-pause-btn" class="control-btn" title="Play/Pause">
+                    <i class="material-icons" style="font-size: 20px;">play_arrow</i>
+                </button>
+                <input type="range" id="progress-bar" class="progress-bar" value="0" min="0" max="100">
+                <div class="volume-container">
+                    <i class="material-icons" style="font-size: 18px; color: rgba(255,255,255,0.7)">volume_up</i>
+                    <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.01"
+                        value="0.2">
+                </div>
+                <button id="hide-player-btn" class="hide-btn" title="Minimize">
+                    <i class="material-icons" style="font-size: 20px;">expand_more</i>
+                </button>
+            </div>
+        </div>
+        <button id="show-player-btn" class="show-player-btn" style="display:none;" title="Show Music Player">
+            <i class="material-icons">music_note</i>
+        </button>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source
+            src="https://cdn.discordapp.com/attachments/1051281816755122268/1440804063489953872/neheart_x_reidenshi_-_snowfall.mp3?ex=691f7cd9&is=691e2b59&hm=c2ec5f4e45bc5d183603ecb2bd7c5859f1f2b0c4fdea6f3e681e17cf3d1b5912&"
+            type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const music = document.getElementById('bg-music');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            const volumeSlider = document.getElementById('volume-slider');
+            const musicCard = document.getElementById('music-card');
+            const hideBtn = document.getElementById('hide-player-btn');
+            const showBtn = document.getElementById('show-player-btn');
+            const playIcon = playPauseBtn.querySelector('i');
+
+            // Initial volume
+            music.volume = 0.2;
+
+            // Function to update icon
+            function updateIcon() {
+                playIcon.textContent = music.paused ? 'play_arrow' : 'pause';
+            }
+
+            // Play/pause toggle
+            playPauseBtn.addEventListener('click', function () {
+                if (music.paused) {
+                    music.play().catch(() => console.log("User interaction required"));
+                } else {
+                    music.pause();
+                }
+                updateIcon();
+            });
+
+            // Volume control
+            volumeSlider.addEventListener('input', function () {
+                music.volume = this.value;
+            });
+
+            // Hide/show player
+            // Floating overlay behavior
+            hideBtn.addEventListener('click', () => {
+                musicCard.classList.add('hidden');
+            });
+
+            showBtn.addEventListener('click', () => {
+                musicCard.classList.remove('hidden');
+            });
+
+            // Attempt autoplay muted (browser-friendly)
+            music.muted = true;
+            music.play().then(() => {
+                music.muted = false; // unmute once started
+                updateIcon();
+            }).catch(() => {
+                // Autoplay failed; user must click play
+                updateIcon();
+                console.log("Autoplay blocked; click play to start music");
+            });
+
+            // Ensure icon is correct initially
+            updateIcon();
+        });
+    </script>
 </body>
+
 </html>
