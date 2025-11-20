@@ -12,8 +12,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&family=Dancing+Script:wght@700&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <style>
@@ -347,20 +345,6 @@
             border-radius: 50%;
         }
 
-        .hide-btn,
-        .show-player-btn {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.6);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .hide-btn:hover,
-        .show-player-btn:hover {
-            color: #fff;
-        }
-
         .show-player-btn {
             position: fixed;
             bottom: 25px;
@@ -375,13 +359,31 @@
             background: rgba(0, 0, 0, 0.8);
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
         }
+
+        .site-title:active {
+            animation: quack-bounce 0.3s;
+        }
+
+        @keyframes quack-bounce {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2) translateY(-10px);
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
     </style>
 </head>
 
 <body>
 
     <header class="main-header">
-        <h1 class="site-title"
+        <h1 id="site-title" class="site-title"
             style="font-size: 3.0rem; transition: transform 0.3s ease; cursor: default; user-select: none; -webkit-user-select: none;"
             onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">HarryRojr</h1>
         <nav class="nav-tabs">
@@ -395,50 +397,16 @@
         <div id="about-me-section" class="content-section active">
             <h2 id="about-me-heading" style="cursor:pointer;">About me:</h2>
             <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const music = document.getElementById('bg-music');
-                    const playPauseBtn = document.getElementById('play-pause-btn');
-                    const volumeSlider = document.getElementById('volume-slider');
-                    const progressBar = document.getElementById('progress-bar');
-                    const hideBtn = document.getElementById('hide-player-btn');
-                    const showBtn = document.getElementById('show-player-btn');
-                    const musicCard = document.getElementById('music-card');
-                    const playIcon = playPauseBtn.querySelector('i');
-
-                    music.volume = 0.2;
-
-                    playPauseBtn.addEventListener('click', () => {
-                        if (music.paused) {
-                            music.play().then(() => playIcon.textContent = 'pause').catch(() => { });
-                        } else {
-                            music.pause();
-                            playIcon.textContent = 'play_arrow';
-                        }
+                const aboutMeHeading = document.getElementById('about-me-heading');
+                if (aboutMeHeading) {
+                    aboutMeHeading.addEventListener('click', function () {
+                        const originalText = aboutMeHeading.textContent;
+                        aboutMeHeading.textContent = "Yes, It's really about me!";
+                        setTimeout(() => {
+                            aboutMeHeading.textContent = originalText;
+                        }, 2000);
                     });
-
-                    volumeSlider.addEventListener('input', () => music.volume = volumeSlider.value);
-
-                    hideBtn.addEventListener('click', () => {
-                        musicCard.style.display = 'none';
-                        showBtn.style.display = 'flex';
-                    });
-
-                    showBtn.addEventListener('click', () => {
-                        musicCard.style.display = 'flex';
-                        showBtn.style.display = 'none';
-                    });
-
-                    // Update progress bar
-                    music.addEventListener('timeupdate', () => {
-                        const progress = (music.currentTime / music.duration) * 100;
-                        progressBar.value = progress || 0;
-                    });
-
-                    // Seek functionality
-                    progressBar.addEventListener('input', () => {
-                        music.currentTime = (progressBar.value / 100) * music.duration;
-                    });
-                });
+                }
             </script>
             <p>
                 I’m Harry Rojr — a human in body, a gamer at heart. I'm everywhere—Xbox, PlayStation, EA, Ubisoft,
@@ -451,18 +419,16 @@
 
             <h2 id="videos-anime-heading" style="cursor:pointer;">Videos & Anime Obsession:</h2>
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const videosAnimeHeading = document.getElementById('videos-anime-heading');
-                    if (videosAnimeHeading) {
-                        videosAnimeHeading.addEventListener('click', function () {
-                            const originalText = videosAnimeHeading.textContent;
-                            videosAnimeHeading.textContent = "I haven't slept for days cuz of that y'know";
-                            setTimeout(() => {
-                                videosAnimeHeading.textContent = originalText;
-                            }, 2500);
-                        });
-                    }
-                });
+                const videosAnimeHeading = document.getElementById('videos-anime-heading');
+                if (videosAnimeHeading) {
+                    videosAnimeHeading.addEventListener('click', function () {
+                        const originalText = videosAnimeHeading.textContent;
+                        videosAnimeHeading.textContent = "I haven't slept for days cuz of that y'know";
+                        setTimeout(() => {
+                            videosAnimeHeading.textContent = originalText;
+                        }, 2500);
+                    });
+                }
             </script>
             <p>
                 When I’m not mashing buttons, I’m glued to YouTube or Crunchyroll, soaking in videos and anime like a
@@ -475,18 +441,16 @@
 
             <h2 id="music-addiction-heading" style="cursor:pointer;">Music Addiction:</h2>
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const musicHeading = document.getElementById('music-addiction-heading');
-                    if (musicHeading) {
-                        musicHeading.addEventListener('click', function () {
-                            const originalText = musicHeading.textContent;
-                            musicHeading.textContent = "I'm such an addict, send help!";
-                            setTimeout(() => {
-                                musicHeading.textContent = originalText;
-                            }, 2000);
-                        });
-                    }
-                });
+                const musicHeading = document.getElementById('music-addiction-heading');
+                if (musicHeading) {
+                    musicHeading.addEventListener('click', function () {
+                        const originalText = musicHeading.textContent;
+                        musicHeading.textContent = "I'm such an addict, send help!";
+                        setTimeout(() => {
+                            musicHeading.textContent = originalText;
+                        }, 2000);
+                    });
+                }
             </script>
             <p>
                 If I’m not gaming or watching anime, I’ve got tunes blasting louder than a Fortnite rocket launch.
@@ -498,18 +462,16 @@
 
             <h2 id="connect-with-me-heading" style="cursor:pointer;">Connect with me:</h2>
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const connectHeading = document.getElementById('connect-with-me-heading');
-                    if (connectHeading) {
-                        connectHeading.addEventListener('click', function () {
-                            const originalText = connectHeading.textContent;
-                            connectHeading.textContent = "I can see you, you little stalker ;)";
-                            setTimeout(() => {
-                                connectHeading.textContent = originalText;
-                            }, 2000);
-                        });
-                    }
-                });
+                const connectHeading = document.getElementById('connect-with-me-heading');
+                if (connectHeading) {
+                    connectHeading.addEventListener('click', function () {
+                        const originalText = connectHeading.textContent;
+                        connectHeading.textContent = "I can see you, you little stalker ;)";
+                        setTimeout(() => {
+                            connectHeading.textContent = originalText;
+                        }, 2000);
+                    });
+                }
             </script>
             <p>
                 Wanna squad up, talk anime or movies, or roast my playlist? I’m everywhere, like a glitch in the Matrix.
@@ -521,18 +483,16 @@
         <div id="socials-section" class="content-section hidden-content">
             <h2 class="text-center cursor-pointer" id="find-me-online-heading">Find Me Online!</h2>
             <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                    const heading = document.getElementById('find-me-online-heading');
-                    if (heading) {
-                        heading.addEventListener('click', function () {
-                            const originalText = heading.textContent;
-                            heading.textContent = "I'm everywhere";
-                            setTimeout(() => {
-                                heading.textContent = originalText;
-                            }, 2000);
-                        });
-                    }
-                });
+                const heading = document.getElementById('find-me-online-heading');
+                if (heading) {
+                    heading.addEventListener('click', function () {
+                        const originalText = heading.textContent;
+                        heading.textContent = "I'm everywhere";
+                        setTimeout(() => {
+                            heading.textContent = originalText;
+                        }, 2000);
+                    });
+                }
             </script>
             <div class="socials-grid">
                 <a href="https://www.xbox.com/en-US/play/user/HarryRojr" class="social-link" target="_blank"
@@ -705,7 +665,7 @@
 
     <audio id="bg-music" loop>
         <source
-            src="https://cdn.discordapp.com/attachments/1051281816755122268/1440804063489953872/neheart_x_reidenshi_-_snowfall.mp3?ex=691f7cd9&is=691e2b59&hm=c2ec5f4e45bc5d183603ecb2bd7c5859f1f2b0c4fdea6f3e681e17cf3d1b5912&"
+            src="https://raw.githubusercontent.com/HarryRojr/HarryRojr.github.io/refs/heads/main/assets/snowfall.mp3"
             type="audio/mpeg">
     </audio>
 
@@ -714,59 +674,162 @@
             const music = document.getElementById('bg-music');
             const playPauseBtn = document.getElementById('play-pause-btn');
             const volumeSlider = document.getElementById('volume-slider');
-            const musicCard = document.getElementById('music-card');
+            const progressBar = document.getElementById('progress-bar');
             const hideBtn = document.getElementById('hide-player-btn');
             const showBtn = document.getElementById('show-player-btn');
+            const musicCard = document.getElementById('music-card');
             const playIcon = playPauseBtn.querySelector('i');
 
-            // Initial volume
             music.volume = 0.2;
 
-            // Function to update icon
             function updateIcon() {
                 playIcon.textContent = music.paused ? 'play_arrow' : 'pause';
             }
 
             // Play/pause toggle
-            playPauseBtn.addEventListener('click', function () {
-                if (music.paused) {
-                    music.play().catch(() => console.log("User interaction required"));
-                } else {
-                    music.pause();
-                }
+            playPauseBtn.addEventListener('click', () => {
+                if (music.paused) music.play().catch(() => { });
+                else music.pause();
                 updateIcon();
             });
 
             // Volume control
-            volumeSlider.addEventListener('input', function () {
-                music.volume = this.value;
+            volumeSlider.addEventListener('input', () => {
+                music.volume = volumeSlider.value;
             });
 
             // Hide/show player
-            // Floating overlay behavior
             hideBtn.addEventListener('click', () => {
                 musicCard.classList.add('hidden');
+                showBtn.style.display = 'flex'; // Show the "show player" button
             });
-
             showBtn.addEventListener('click', () => {
                 musicCard.classList.remove('hidden');
+                showBtn.style.display = 'none'; // Hide the "show player" button
+                updateIcon(); // Ensure icon matches music state
             });
 
-            // Attempt autoplay muted (browser-friendly)
-            music.muted = true;
-            music.play().then(() => {
-                music.muted = false; // unmute once started
-                updateIcon();
-            }).catch(() => {
-                // Autoplay failed; user must click play
-                updateIcon();
-                console.log("Autoplay blocked; click play to start music");
+            // Update progress bar
+            music.addEventListener('timeupdate', () => {
+                const progress = (music.currentTime / music.duration) * 100;
+                progressBar.value = progress || 0;
             });
 
-            // Ensure icon is correct initially
+            progressBar.addEventListener('input', () => {
+                music.currentTime = (progressBar.value / 100) * music.duration;
+            });
+
             updateIcon();
         });
+        //quack
+        const siteTitle = document.getElementById('site-title');
+
+        siteTitle.addEventListener('click', () => {
+            try {
+                // Create a fresh Audio object each click
+                const quack = new Audio('https://www.myinstants.com/media/sounds/quack_5.mp3');
+                quack.volume = 0.5;
+                quack.muted = false;
+                quack.play().then(() => {
+                    console.log("Quack played successfully!");
+                }).catch(err => {
+                    console.error("Quack failed:", err);
+                });
+
+                // Bounce effect
+                siteTitle.style.animation = 'quack-bounce 0.3s';
+                siteTitle.addEventListener('animationend', () => {
+                    siteTitle.style.animation = '';
+                }, { once: true });
+
+            } catch (e) {
+                console.error("Unexpected error:", e);
+            }
+        });
     </script>
+    <canvas id="snowfall-canvas" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+"></canvas>
+    <script>
+        //SNOWFALL SCRIPT
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Canvas setup ---
+            const canvas = document.getElementById('snowfall-canvas');
+            const ctx = canvas.getContext('2d');
+
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const numFlakes = 80;
+            const flakes = [];
+
+            for (let i = 0; i < numFlakes; i++) {
+                flakes.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: Math.random() * 4 + 2,
+                    speed: Math.random() * 1.5 + 0.5
+                });
+            }
+
+            // --- Snow control ---
+            let snowAlpha = 0;       // current opacity
+            let targetAlpha = 0;     // fade target
+            let animationId;
+
+            function drawFlakes() {
+                ctx.clearRect(0, 0, width, height);
+                ctx.fillStyle = `rgba(255,255,255,${snowAlpha})`;
+                flakes.forEach(f => {
+                    ctx.fillRect(f.x, f.y, f.size, f.size);
+                    f.y += f.speed;
+                    if (f.y > height) f.y = -f.size;
+                });
+            }
+
+            function animateSnow() {
+                snowAlpha += (targetAlpha - snowAlpha) * 0.05; // smooth fade
+                drawFlakes();
+                animationId = requestAnimationFrame(animateSnow);
+            }
+
+            animateSnow(); // start loop
+
+            function startSnow() { targetAlpha = 1; }
+            function stopSnow() { targetAlpha = 0; }
+
+            // --- Connect to music player ---
+            const music = document.getElementById('bg-music');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+
+            playPauseBtn.addEventListener('click', () => {
+                setTimeout(() => {
+                    if (!music.paused) startSnow();
+                    else stopSnow();
+                }, 50);
+            });
+
+            // Also trigger on initial play if needed
+            music.addEventListener('play', startSnow);
+            music.addEventListener('pause', stopSnow);
+        });
+    </script>
+
+
+
+
+
 </body>
 
 </html>
