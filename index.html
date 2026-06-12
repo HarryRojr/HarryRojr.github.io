@@ -1,1082 +1,995 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link rel="icon" type="image/x-icon"
-        href="https://raw.githubusercontent.com/HarryRojr/HarryRojr.github.io/refs/heads/main/assets/HR.ico">
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HarryRojr</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&family=Dancing+Script:wght@700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-    <style>
-        @font-face {
-            font-family: 'CustomFont';
-            src: url('https://raw.githubusercontent.com/HarryRojr/HarryRojr.github.io/refs/heads/main/assets/font1.ttf');
-        }
-
-        body {
-            margin: 0;
-            font-family: 'CustomFont', sans-serif;
-            background-color: #000000;
-            color: #ffffff;
-            text-align: center;
-            padding-top: 5rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .main-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #000000;
-            border-bottom: 1px solid #ff0000;
-            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.1);
-            z-index: 1000;
-            padding: 0.75rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .site-title {
-            font-family: 'Pacifico', cursive;
-            font-size: 2.2rem;
-            color: #ff0000;
-            margin: 0;
-            line-height: 1;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-tab-button {
-            background: none;
-            border: none;
-            padding: 0.5rem 0;
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
-            cursor: pointer;
-            position: relative;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .nav-tab-button::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background-color: #ff0000;
-            transition: width 0.3s ease-in-out;
-            box-shadow: 0 0 8px #ff0000;
-        }
-
-        .nav-tab-button:hover::after {
-            width: 100%;
-        }
-
-        .nav-tab-button.active {
-            color: #ff0000;
-            text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
-        }
-
-        .nav-tab-button.active::after {
-            width: 100%;
-        }
-
-        .content-container {
-
-            flex: 1 0 auto;
-            max-width: 1100px;
-            width: 100%;
-            padding: 2rem;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            box-sizing: border-box;
-        }
-
-        .content-section {
-            line-height: 1.8;
-            background-color: #0a0a0a;
-            border: 1px solid #330000;
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-
-        @media (min-width: 1024px) {
-            .content-container {
-                max-width: 1100px;
-                padding: 2rem;
-            }
-
-            .content-section {
-                padding: 3rem;
-            }
-        }
-
-        .content-section.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .content-section h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ff0000;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #ff0000;
-            padding-bottom: 0.5rem;
-            display: inline-block;
-            letter-spacing: 1px;
-            text-shadow: 0 0 5px rgba(255, 0, 0, 0.4);
-        }
-
-        .content-section p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #e0e0e0;
-            margin-bottom: 1rem;
-        }
-
-        .socials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-            justify-items: center;
-        }
-
-        .social-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            background-color: #000000;
-            border: 1px solid #330000;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #ffffff;
-            transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            background-color: #1a0000;
-            border-color: #ff0000;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
-        }
-
-        .social-icon {
-            font-size: 3.5rem;
-            color: #ff0000;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-        }
-
-        .social-link-label {
-            font-size: 1rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-        }
-
-        footer {
-            margin-top: 4rem;
-            padding: 1.5rem;
-            color: #ff0000;
-            font-weight: bold;
-            font-size: 1.1rem;
-            background-color: #000000;
-            width: 100%;
-            border-top: 1px solid #330000;
-        }
-
-        .hidden-content {
-            display: none;
-        }
-
-        /* Cozy Music Player */
-        .music-player-container {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            z-index: 9999;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .music-player-card {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 20px;
-            width: min(350px, 90vw);
-            height: 70px;
-            border-radius: 18px;
-            /* Rounded rectangle */
-            background: rgba(0, 0, 0, 0.85);
-            border: 1px solid rgba(255, 0, 0, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 0, 0, 0.6);
-            gap: 10px;
-        }
-
-        /* Play button glow animation */
-
-        @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
-                transform: scale(1);
-            }
-
-            50% {
-                box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.5);
-                transform: scale(1.05);
-            }
-
-            100% {
-                box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
-                transform: scale(1);
-            }
-        }
-
-        /* Apply glow only when paused */
-        #play-pause-btn {
-            animation: pulse-glow 1.5s infinite ease-in-out;
-        }
-
-        #play-pause-btn.playing {
-            animation: none;
-        }
-
-        /* Track info aligned horizontally */
-        .music-player-card .track-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-left: 10px;
-            flex: 1;
-            /* take remaining space */
-            text-align: left;
-        }
-
-        /* Buttons */
-        .music-player-card .control-btn.big-btn {
-            width: 50px;
-            height: 50px;
-            font-size: 28px;
-        }
-
-        /* Volume slider small and horizontal */
-        .music-player-card .volume-container {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* Mobile adjustments */
-        @media (max-width: 480px) {
-            .music-player-card {
-                width: 90vw;
-                height: 80px;
-                /* slightly taller */
-                padding: 10px 12px;
-                gap: 10px;
-            }
-
-            .music-player-card .control-btn.big-btn {
-                width: 80%;
-                /* take 80% of the card height */
-                height: 80%;
-                font-size: 1.5rem;
-            }
-
-            .volume-slider {
-                width: 60px;
-            }
-        }
-
-
-        .control-btn.big-btn {
-            width: 60px;
-            /* reasonable size */
-            height: 60px;
-            font-size: 28px;
-        }
-
-        .volume-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Hidden state keeps it in DOM but moves it offscreen */
-        .music-player-card.hidden {
-            transform: translate(-50px, 50px) scale(0.8);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .show-player-btn {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #ff0000;
-            background: rgba(0, 0, 0, 0.8);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-            z-index: 9998;
-            cursor: pointer;
-        }
-
-        .track-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            flex: 1;
-        }
-
-        .track-title {
-            color: #fff;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-
-        .track-artist {
-            color: #ff4d4d;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .player-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .control-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            cursor: pointer;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-
-        .control-btn:hover {
-            background: #ff0000;
-            color: #000;
-            transform: scale(1.15);
-        }
-
-        .volume-container {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .volume-slider {
-            -webkit-appearance: none;
-            width: 100px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            cursor: pointer;
-        }
-
-        .volume-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
-            background: #ff0000;
-            border-radius: 50%;
-        }
-
-
-        .show-player-btn {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #ff0000;
-            background: rgba(0, 0, 0, 0.8);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-        }
-
-        .site-title:active {
-            animation: quack-bounce 0.3s;
-        }
-
-        @keyframes quack-bounce {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.2) translateY(-10px);
-            }
-
-            100% {
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        /* Mobile adjustments */
-        @media (max-width: 480px) {
-            .music-player-card {
-                width: min(240px, 90vw);
-                height: 60px;
-                padding: 10px 12px;
-                gap: 8px;
-            }
-
-            .control-btn.big-btn {
-                width: 42px;
-                height: 42px;
-                font-size: 24px;
-            }
-
-            .volume-slider {
-                width: 60px;
-            }
-        }
-
-        .control-btn.big-btn {
-            width: 70px;
-            height: 70px;
-            font-size: 32px;
-        }
-    </style>
+  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/HarryRojr/HarryRojr.github.io/refs/heads/main/assets/HR.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HarryRojr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600;700&family=Dancing+Script:wght@700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <style>
+    @font-face {
+      font-family: 'CustomFont';
+      src: url('https://raw.githubusercontent.com/HarryRojr/HarryRojr.github.io/refs/heads/main/assets/font1.ttf');
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0f14;
+      --surface: #151820;
+      --surface2: #1c2030;
+      --surface3: #212640;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(124,92,252,0.4);
+      --accent: #7c5cfc;
+      --accent2: #00d4aa;
+      --accent-dim: rgba(124,92,252,0.12);
+      --accent2-dim: rgba(0,212,170,0.1);
+      --text: #e8eaf0;
+      --muted: #8b90a0;
+      --glow: rgba(124,92,252,0.2);
+      --glow2: rgba(0,212,170,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'CustomFont', 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 5rem;
+    }
+
+    /* ── SCROLL PROGRESS BAR ── */
+    #scroll-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 9999;
+      transition: width 0.1s linear;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(13,15,20,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+    }
+
+    .nav-logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.1rem;
+      color: var(--accent);
+      line-height: 1;
+      text-shadow: 0 0 18px var(--glow);
+      cursor: default;
+      user-select: none;
+      transition: transform 0.3s ease, text-shadow 0.3s;
+    }
+    .nav-logo:hover { transform: scale(1.08); text-shadow: 0 0 28px var(--glow); }
+
+    @keyframes quack-bounce {
+      0%   { transform: scale(1); }
+      30%  { transform: scale(1.18) translateY(-7px); }
+      60%  { transform: scale(0.95); }
+      80%  { transform: scale(1.07); }
+      100% { transform: scale(1); }
+    }
+
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links button {
+      background: none; border: none;
+      padding: 0.5rem 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      position: relative;
+      transition: color 0.25s;
+    }
+    .nav-links button::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+    .nav-links button:hover { color: var(--text); }
+    .nav-links button:hover::after,
+    .nav-links button.active::after { width: 100%; }
+    .nav-links button.active { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    .content-container {
+      flex: 1 0 auto;
+      max-width: 920px;
+      width: 100%;
+      padding: 2rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .content-section { display: none; }
+    .content-section.active { display: block; }
+
+    /* staggered card entrance */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.25rem;
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: fadeUp 0.5s ease forwards;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124,92,252,0.3), transparent);
+    }
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.12s; }
+    .card:nth-child(3) { animation-delay: 0.19s; }
+    .card:nth-child(4) { animation-delay: 0.26s; }
+    .card:nth-child(5) { animation-delay: 0.33s; }
+    .card:nth-child(6) { animation-delay: 0.40s; }
+    .card:nth-child(7) { animation-delay: 0.47s; }
+
+    /* ── SECTION HEADINGS ── */
+    .section-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      user-select: none;
+      width: fit-content;
+      transition: color 0.2s;
+    }
+    .section-heading:hover { color: var(--accent2); }
+    .section-heading .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .section-heading.popped { color: var(--accent2); }
+    .section-heading.popped .dot { background: var(--accent2); box-shadow: 0 0 8px var(--accent2); }
+
+    @keyframes bounce {
+      0%   { transform: scale(1); }
+      28%  { transform: scale(1.14); }
+      55%  { transform: scale(0.94); }
+      75%  { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+    .bounce-anim { animation: bounce 0.45s ease; }
+
+    .card p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .avatar {
+      width: 108px; height: 108px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem; font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 4px rgba(124,92,252,0.2), 0 0 40px var(--glow);
+      position: relative;
+    }
+    .avatar::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent2)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      animation: rotate-border 4s linear infinite;
+    }
+    @keyframes rotate-border {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .hero-text { flex: 1; }
+    .hero-text h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.1rem; font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.35rem;
+    }
+    .hero-text h1 span { color: var(--accent); }
+    .hero-text .sub { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.1rem; }
+
+    .badge-row { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .badge {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.22rem 0.82rem;
+      font-size: 0.76rem; font-weight: 600;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+    }
+    .badge.a { border-color: rgba(124,92,252,0.5); color: var(--accent); background: var(--accent-dim); }
+    .badge.t { border-color: rgba(0,212,170,0.4); color: var(--accent2); background: var(--accent2-dim); }
+
+    /* ── STAT CARDS ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .stat-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .stat-card:hover { border-color: var(--border-hover); transform: translateY(-3px); box-shadow: 0 8px 24px var(--glow); }
+    .stat-card:hover::after { opacity: 1; }
+    .stat-card .stat-icon { font-size: 1.5rem; margin-bottom: 0.4rem; display: block; }
+    .stat-card .num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.65rem; font-weight: 700;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-card .label { font-size: 0.75rem; color: var(--muted); font-family: 'Inter', sans-serif; }
+
+    /* ── GAME CARDS ── */
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .game-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 1.2rem;
+      text-align: left;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .game-card:hover {
+      border-color: rgba(124,92,252,0.5);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(124,92,252,0.1);
+    }
+    .game-card .gi { font-size: 1.75rem; display: block; margin-bottom: 0.45rem; }
+    .game-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
+    .game-card p  { font-size: 0.77rem; color: var(--muted); margin: 0; line-height: 1.5; }
+    .game-card .tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: var(--accent2-dim);
+      border: 1px solid rgba(0,212,170,0.2);
+      border-radius: 999px;
+      padding: 0.1rem 0.58rem;
+      font-size: 0.68rem;
+      color: var(--accent2);
+      font-family: 'Inter', sans-serif; font-weight: 600;
+    }
+    .now-playing-badge {
+      position: absolute;
+      top: 0.65rem; right: 0.65rem;
+      background: var(--accent-dim);
+      border: 1px solid rgba(124,92,252,0.35);
+      border-radius: 999px;
+      padding: 0.1rem 0.5rem;
+      font-size: 0.62rem;
+      color: var(--accent);
+      font-family: 'Inter', sans-serif; font-weight: 700;
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .now-playing-badge .bars {
+      display: flex; align-items: flex-end; gap: 2px; height: 10px;
+    }
+    .bar {
+      width: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+      animation: bar-bounce 0.9s ease-in-out infinite;
+    }
+    .bar:nth-child(1) { height: 4px;  animation-delay: 0s; }
+    .bar:nth-child(2) { height: 8px;  animation-delay: 0.15s; }
+    .bar:nth-child(3) { height: 5px;  animation-delay: 0.3s; }
+    @keyframes bar-bounce {
+      0%, 100% { transform: scaleY(1); }
+      50%       { transform: scaleY(0.35); }
+    }
+
+    /* ── SPECS ── */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 2rem;
+      margin-top: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 0.75rem;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-key {
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--accent2);
+      flex-shrink: 0;
+    }
+    .spec-val { font-size: 0.87rem; color: var(--text); text-align: right; }
+
+    /* terminal accent above specs */
+    .terminal-bar {
+      display: flex; align-items: center; gap: 0.45rem;
+      margin-bottom: 1.25rem;
+    }
+    .terminal-bar .dot-r { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; }
+    .terminal-bar .dot-y { width: 10px; height: 10px; border-radius: 50%; background: #febc2e; }
+    .terminal-bar .dot-g { width: 10px; height: 10px; border-radius: 50%; background: #28c840; }
+    .terminal-bar span { font-family: 'Inter', monospace; font-size: 0.78rem; color: var(--muted); margin-left: 0.5rem; }
+
+    /* ── SOCIALS ── */
+    .socials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+      gap: 1.1rem;
+      margin-top: 1.5rem;
+    }
+    .social-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.1rem 0.6rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+      cursor: pointer;
+      width: 100%;
+    }
+    .social-link:hover {
+      border-color: rgba(124,92,252,0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px var(--glow);
+    }
+    .social-link img { width: 48px; height: 48px; object-fit: contain; margin-bottom: 0.55rem; }
+    .social-link-label { font-size: 0.82rem; font-weight: 600; font-family: 'Inter', sans-serif; color: var(--muted); }
+
+    details summary { list-style: none; width: 100%; }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .social-link { border-color: rgba(124,92,252,0.45); }
+    .details-reveal {
+      margin-top: 0.55rem;
+      padding: 0.55rem 0.8rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--muted);
+      text-align: center;
+    }
+    .details-reveal strong { color: var(--accent2); }
+
+    /* ── FOOTER ── */
+    footer {
+      width: 100%;
+      padding: 1.4rem;
+      text-align: center;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: text-shadow 0.3s;
+      margin-top: auto;
+    }
+    footer:hover { text-shadow: 0 0 12px var(--glow); }
+
+    /* ── MUSIC PLAYER ── */
+    .music-player-card {
+      position: fixed;
+      bottom: 24px; left: 24px;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      padding: 13px 16px;
+      width: min(340px, 90vw);
+      height: 66px;
+      border-radius: 18px;
+      background: rgba(13,15,20,0.94);
+      border: 1px solid rgba(124,92,252,0.28);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.55), 0 0 28px var(--glow);
+      gap: 10px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .music-player-card.hidden {
+      transform: translate(-48px, 48px) scale(0.8);
+      opacity: 0; pointer-events: none;
+    }
+
+    @keyframes pulse-glow {
+      0%   { box-shadow: 0 0 10px rgba(124,92,252,0.4), 0 0 20px rgba(124,92,252,0.15); transform: scale(1); }
+      50%  { box-shadow: 0 0 18px rgba(124,92,252,0.85), 0 0 36px rgba(124,92,252,0.35); transform: scale(1.06); }
+      100% { box-shadow: 0 0 10px rgba(124,92,252,0.4), 0 0 20px rgba(124,92,252,0.15); transform: scale(1); }
+    }
+    #play-pause-btn { animation: pulse-glow 1.6s infinite ease-in-out; }
+    #play-pause-btn.playing { animation: none; }
+
+    /* music equalizer bars inside player */
+    .eq-bars { display: flex; align-items: flex-end; gap: 2px; height: 14px; margin-left: 2px; }
+    .eq-bar {
+      width: 2.5px;
+      background: var(--accent2);
+      border-radius: 1px;
+      animation: bar-bounce 0.8s ease-in-out infinite;
+      display: none;
+    }
+    .eq-bar:nth-child(1) { height: 5px; animation-delay: 0s; }
+    .eq-bar:nth-child(2) { height: 11px; animation-delay: 0.18s; }
+    .eq-bar:nth-child(3) { height: 7px; animation-delay: 0.36s; }
+    .eq-bar:nth-child(4) { height: 9px; animation-delay: 0.1s; }
+    .eq-bar.visible { display: block; }
+
+    .track-info { display: flex; flex-direction: column; justify-content: center; flex: 1; text-align: left; overflow: hidden; }
+    .track-row  { display: flex; align-items: center; gap: 6px; }
+    .track-title { color: var(--text); font-weight: 700; font-size: 0.88rem; font-family: 'Inter', sans-serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .track-artist { color: var(--accent2); font-size: 0.72rem; font-weight: 500; font-family: 'Inter', sans-serif; }
+
+    .ctrl-btn {
+      background: rgba(255,255,255,0.07);
+      border: none; border-radius: 50%;
+      width: 38px; height: 38px;
+      cursor: pointer; color: var(--text);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    .ctrl-btn:hover { background: var(--accent); transform: scale(1.12); }
+    .ctrl-btn.big { width: 46px; height: 46px; font-size: 24px; }
+
+    .vol-wrap { display: flex; align-items: center; gap: 5px; }
+    .vol-slider {
+      -webkit-appearance: none;
+      width: 68px; height: 3px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 2px; cursor: pointer;
+    }
+    .vol-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 10px; height: 10px;
+      background: var(--accent); border-radius: 50%;
+    }
+
+    .show-player-btn {
+      position: fixed;
+      bottom: 24px; left: 24px;
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(124,92,252,0.35);
+      background: rgba(13,15,20,0.92);
+      box-shadow: 0 0 22px var(--glow);
+      z-index: 9999; cursor: pointer; color: var(--accent);
+    }
+
+    /* ── SNOWFALL ── */
+    #snowfall-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9997;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .nav-logo { font-size: 1.7rem; }
+      .nav-links { gap: 0.85rem; }
+      .nav-links button { font-size: 0.78rem; }
+      .content-container { padding: 1rem; }
+      .card { padding: 1.4rem; }
+      .hero { flex-direction: column; gap: 1.25rem; }
+      .hero-text h1 { font-size: 1.7rem; }
+      .specs-grid { grid-template-columns: 1fr; }
+      .music-player-card { height: 60px; padding: 9px 13px; }
+      .ctrl-btn.big { width: 40px; height: 40px; font-size: 20px; }
+      .vol-slider { width: 52px; }
+    }
+  </style>
 </head>
-
 <body>
 
-    <header class="main-header">
-        <h1 id="site-title" class="site-title"
-            style="font-size: 3.0rem; transition: transform 0.3s ease; cursor: default; user-select: none; -webkit-user-select: none;"
-            onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">HarryRojr</h1>
-        <nav class="nav-tabs">
-            <button class="nav-tab-button active" data-target="about-me-section">Home</button>
-            <button class="nav-tab-button" data-target="socials-section">Socials</button>
-            <button class="nav-tab-button" data-target="love-life-section">Love Life</button>
-        </nav>
-    </header>
+<div id="scroll-bar"></div>
 
-    <main class="content-container">
-        <div id="about-me-section" class="content-section active">
-            <h2 id="about-me-heading" style="cursor:pointer;">About me:</h2>
-            <style>
-                @keyframes bounce {
-                    0% {
-                        transform: scale(1);
-                    }
+<!-- ── NAV ── -->
+<nav>
+  <span id="site-title" class="nav-logo">HarryRojr</span>
+  <ul class="nav-links">
+    <li><button class="active" data-target="home-section">Home</button></li>
+    <li><button data-target="socials-section">Socials</button></li>
+    <li><button data-target="love-life-section">Love Life</button></li>
+  </ul>
+</nav>
 
-                    30% {
-                        transform: scale(1.2);
-                    }
+<main class="content-container">
 
-                    50% {
-                        transform: scale(0.95);
-                    }
+  <!-- ══ HOME ══ -->
+  <div id="home-section" class="content-section active">
 
-                    70% {
-                        transform: scale(1.1);
-                    }
-
-                    100% {
-                        transform: scale(1);
-                    }
-                }
-
-                .glow {
-                    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff4d4d;
-                }
-            </style>
-
-            <script>
-                const aboutMeHeading = document.getElementById('about-me-heading');
-
-                aboutMeHeading.addEventListener('click', () => {
-                    const originalText = aboutMeHeading.textContent;
-
-                    // Change text
-                    aboutMeHeading.textContent = "Yes, It's really about me!";
-
-                    // Add glow and bounce
-                    aboutMeHeading.classList.add('glow');
-                    aboutMeHeading.style.animation = 'bounce 0.5s';
-
-                    // Remove effects and restore text after animation
-                    aboutMeHeading.addEventListener('animationend', () => {
-                        aboutMeHeading.style.animation = '';
-                        aboutMeHeading.classList.remove('glow');
-                        aboutMeHeading.textContent = originalText;
-                    }, { once: true });
-                });
-            </script>
-            <p>
-                I’m Harry Rojr — a human in body, a gamer at heart. My life’s a 24/7 LAN party, minus the stale pizza (I
-                prefer snacks with flavor). I'm sniping in Call of Duty, sailing the seas and stealing the Chests of
-                Fortune, and parkouring through Assassin’s Creed like it’s my day job. Whether it’s clutch moments in
-                Battlefield or trolling in Among Us, I’m the MVP you didn’t see coming and Currently, I’m serving up L’s
-                in Sea of Thieves and making people ragequit in TEKKEN 8. I'm nice in general tho! ;)
-            </p>
-
-            <h2 id="videos-anime-heading" style="cursor:pointer;">Movies & Anime Obsession:</h2>
-            <style>
-                @keyframes bounce {
-                    0% {
-                        transform: scale(1);
-                    }
-
-                    30% {
-                        transform: scale(1.2);
-                    }
-
-                    50% {
-                        transform: scale(0.95);
-                    }
-
-                    70% {
-                        transform: scale(1.1);
-                    }
-
-                    100% {
-                        transform: scale(1);
-                    }
-                }
-
-                .glow {
-                    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff4d4d;
-                }
-            </style>
-
-            <script>
-                const videosAnimeHeading = document.getElementById('videos-anime-heading');
-
-                videosAnimeHeading.addEventListener('click', () => {
-                    const originalText = videosAnimeHeading.textContent;
-
-                    // Change text
-                    videosAnimeHeading.textContent = "I haven't slept for days cuz of that y'know";
-
-                    // Add glow and bounce
-                    videosAnimeHeading.classList.add('glow');
-                    videosAnimeHeading.style.animation = 'bounce 0.5s';
-
-                    // Remove effects and restore text after animation
-                    videosAnimeHeading.addEventListener('animationend', () => {
-                        videosAnimeHeading.style.animation = '';
-                        videosAnimeHeading.classList.remove('glow');
-                        videosAnimeHeading.textContent = originalText;
-                    }, { once: true });
-                });
-            </script>
-            <p>
-                When I’m not mashing buttons, I’m glued to videos, anime, shows, and movies, soaking it all in like a
-                sponge in a pixelated ocean. My watch history? A wild mix of people trolling killers in Dead by
-                Daylight, or movies that keep me glued for hours, and anime so epic it makes my controller cry. I’ve
-                binged Attack on Titan faster than you can say “Titan yeet," even though I slept through the first two
-                seasons (but hey, the ending makes it all better). Whether it’s a 3-hour-long movie, an anime marathon,
-                or binging entire seasons of shows, I’m here for it — even if Crunchyroll or Netflix aren’t doing the
-                honors themselves, if you catch my drift. Peep my faves and join my watch party (popcorn not included)!
-            </p>
-
-            <h2 id="music-addiction-heading" style="cursor:pointer;">Music & Manga Addiction:</h2>
-            <style>
-                @keyframes bounce {
-                    0% {
-                        transform: scale(1);
-                    }
-
-                    30% {
-                        transform: scale(1.2);
-                    }
-
-                    50% {
-                        transform: scale(0.95);
-                    }
-
-                    70% {
-                        transform: scale(1.1);
-                    }
-
-                    100% {
-                        transform: scale(1);
-                    }
-                }
-
-                .glow {
-                    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff4d4d;
-                }
-            </style>
-
-            <script>
-                const musicHeading = document.getElementById('music-addiction-heading');
-
-                musicHeading.addEventListener('click', () => {
-                    const originalText = musicHeading.textContent;
-
-                    // Change text
-                    musicHeading.textContent = "I'm such an addict, send help!";
-
-                    // Add glow and bounce
-                    musicHeading.classList.add('glow');
-                    musicHeading.style.animation = 'bounce 0.5s';
-
-                    // Remove effects and restore text after animation
-                    musicHeading.addEventListener('animationend', () => {
-                        musicHeading.style.animation = '';
-                        musicHeading.classList.remove('glow');
-                        musicHeading.textContent = originalText;
-                    }, { once: true });
-                });
-            </script>
-            <p>
-                If I’m not gaming or watching anime, you’ll find me lost in comic books or manga with tunes blasting
-                louder than a Fortnite rocket launch. Music’s my mana, keeping me powered up as I flip pages late into
-                the night. My playlist? A chaotic mix of hyped-up bass drops for epic moments, lo-fi beats for rainy
-                nights, and bass that hits right in the feels. From Ed Sheeran to Sia, I’m vibing harder than a creeper
-                at a rave. Always reading and listening on Spotify!
-            </p>
-
-            <h2 id="connect-with-me-heading" style="cursor:pointer;">Connect with me:</h2>
-            <style>
-                @keyframes bounce {
-                    0% {
-                        transform: scale(1);
-                    }
-
-                    30% {
-                        transform: scale(1.2);
-                    }
-
-                    50% {
-                        transform: scale(0.95);
-                    }
-
-                    70% {
-                        transform: scale(1.1);
-                    }
-
-                    100% {
-                        transform: scale(1);
-                    }
-                }
-
-                .glow {
-                    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff4d4d;
-                }
-            </style>
-
-            <script>
-                const connectHeading = document.getElementById('connect-with-me-heading');
-
-                connectHeading.addEventListener('click', () => {
-                    const originalText = connectHeading.textContent;
-
-                    // Change text
-                    connectHeading.textContent = "I can see you, you little stalker ;)";
-
-                    // Add glow and bounce
-                    connectHeading.classList.add('glow');
-                    connectHeading.style.animation = 'bounce 0.5s';
-
-                    // Remove effects and restore text after animation
-                    connectHeading.addEventListener('animationend', () => {
-                        connectHeading.style.animation = '';
-                        connectHeading.classList.remove('glow');
-                        connectHeading.textContent = originalText;
-                    }, { once: true });
-                });
-            </script>
-            <p>
-                Wanna squad up, talk anime or movies, or roast my playlist? I’m everywhere, like a glitch in the Matrix.
-                Hit me up on Xbox, PlayStation, Twitter(X) or Reddit, but don’t expect me to go easy on you in-game—I’m
-                as ruthless as a Dark Souls invader.
-            </p>
+    <!-- Hero -->
+    <div class="card">
+      <div class="hero">
+        <div class="avatar">HR</div>
+        <div class="hero-text">
+          <h1>Hey, I'm <span>HarryRojr</span> 👾</h1>
+          <p class="sub">A human in body, a gamer at heart. Welcome to my corner of the internet.</p>
+          <div class="badge-row">
+            <span class="badge a">PC + Console</span>
+            <span class="badge t">Competitive</span>
+            <span class="badge">Anime Binger</span>
+            <span class="badge">Night Owl</span>
+            <span class="badge">Manga Reader</span>
+          </div>
         </div>
-
-        <div id="socials-section" class="content-section hidden-content">
-            <h2 class="text-center cursor-pointer" id="find-me-online-heading">Find Me Online!</h2>
-            <script>
-                const heading = document.getElementById('find-me-online-heading');
-                if (heading) {
-                    heading.addEventListener('click', function () {
-                        const originalText = heading.textContent;
-                        heading.textContent = "I'm everywhere";
-                        setTimeout(() => {
-                            heading.textContent = originalText;
-                        }, 2000);
-                    });
-                }
-            </script>
-            <div class="socials-grid">
-                <a href="https://www.xbox.com/en-US/play/user/HarryRojr" class="social-link" target="_blank"
-                    rel="noopener noreferrer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Xbox_one_logo.svg" alt="Xbox Logo"
-                        class="social-icon" style="width: 56px; height: 56px;">
-                    <span class="social-link-label">Xbox</span>
-                </a>
-                <details>
-                    <summary style="cursor:pointer; list-style:none;">
-                        <div class="social-link" style="display:flex; flex-direction:column; align-items:center;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/PlayStation_logo.svg"
-                                alt="PlayStation Logo" class="social-icon" style="width: 56px; height: 56px;">
-                            <span class="social-link-label">PlayStation</span>
-                        </div>
-                    </summary>
-                    <div style="margin-top:0.5rem; color:#e0d8d8; text-align:center;">
-                        Username: <strong>HarryRojr</strong>
-                    </div>
-                </details>
-                <details>
-                    <summary style="cursor:pointer; list-style:none;">
-                        <div class="social-link" style="display:flex; flex-direction:column; align-items:center;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Epic_Games_logo.svg"
-                                alt="Epic Games Logo" class="social-icon" style="width: 56px; height: 56px;">
-                            <span class="social-link-label">Epic Games</span>
-                        </div>
-                    </summary>
-                    <div style="margin-top:0.5rem; color:#e0d8d8; text-align:center;">
-                        Username: <strong>HarryRojr</strong>
-                    </div>
-                </details>
-                <a href="https://x.com/HarryRojr/" class="social-link" target="_blank" rel="noopener noreferrer">
-                    <img src="https://about.x.com/content/dam/about-twitter/x/large-x-logo.png.twimg.768.png"
-                        alt="X Logo" class="social-icon" style="width: 56px; height: 56px;">
-                    <span class="social-link-label">Twitter(X)</span>
-                </a>
-                <a href="https://www.reddit.com/user/HarryRojr/" class="social-link" target="_blank"
-                    rel="noopener noreferrer">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Reddit_Logo_Icon.svg" alt="Reddit Logo"
-                        class="social-icon" style="width: 56px; height: 56px;">
-                    <span class="social-link-label">Reddit</span>
-                </a>
-                <a href="https://open.spotify.com/user/27mruhq25lv2pvek3hs2ksi0t?si=b5e9fd6a937642cc"
-                    class="social-link" target="_blank" rel="noopener noreferrer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg"
-                        alt="Spotify Logo" class="social-icon" style="width: 56px; height: 56px;">
-                    <span class="social-link-label">Spotify</span>
-                </a>
-                <a href="https://www.youtube.com/@HarryRojr" class="social-link" target="_blank"
-                    rel="noopener noreferrer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"
-                        alt="YouTube Logo" class="social-icon" style="width: 56px; height: 56px;">
-                    <span class="social-link-label">YouTube</span>
-                </a>
-                <a href="https://www.twitch.tv/HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Twitch_Glitch_Logo_Purple.svg"
-                        alt="Twitch Logo" class="social-icon" style="width: 56px; height: 56px;">
-                    <span class="social-link-label">Twitch</span>
-                </a>
-                <details>
-                    <summary class="social-link" style="display:flex; flex-direction:column; align-items:center;">
-                        <img src="https://preview.redd.it/old-discord-logo-feeling-old-yet-v0-7enta5v0houc1.png?auto=webp&s=780eba64b34cc77e01abc8c0f9cc031a9801f441"
-                            alt="Discord Logo" class="social-icon" style="width: 56px; height: 56px;">
-                        <span class="social-link-label">Discord</span>
-                    </summary>
-                    <div style="margin-top:0.5rem; color:#e0d8d8; text-align:center;">
-                        Username: <strong>itsTheHR</strong>
-                    </div>
-                </details>
-                <a href="https://steamcommunity.com/id/HarryRojr" class="social-link" target="_blank"
-                    rel="noopener noreferrer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam Logo"
-                        class="social-icon" style="width: 56px; height: 56px;">
-                    <span class="social-link-label">Steam</span>
-                </a>
-                <a href="https://my.play/HarryRojr" class="social-link" target="_blank"
-                    rel="noopener noreferrer">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_Play_2022_icon.svg/960px-Google_Play_2022_icon.svg.png" alt="Google Play"
-                        class="social-icon" style="width: 56px; height: 56px;">
-                    <span class="social-link-label">Google Play Games</span>
-                </a>
-                
-            </div>
-        </div>
-
-        <div id="love-life-section" class="content-section hidden-content">
-            <h2 class="text-center">My Love Life (Top Secret!)</h2>
-            <p class="text-center text-gray-400">
-                This section is currently empty, as my love life is as mysterious as a hidden achievement in a new game.
-                Stay tuned for future updates, or maybe not! 😉
-            </p>
-            <p class="text-center text-gray-400 mt-4">
-                (Psst... check the "Love Life" tab in the header again if you're feeling brave!)
-            </p>
-        </div>
-    </main>
-
-    <footer id="site-footer" class="text-center cursor-pointer" style="cursor:pointer;">
-        Thanks for reading, Have a Wonderful Day!
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const navButtons = document.querySelectorAll('.nav-tab-button');
-            const contentSections = document.querySelectorAll('.content-section');
-
-            function showSection(targetId) {
-                navButtons.forEach(button => button.classList.remove('active'));
-                contentSections.forEach(section => {
-                    section.classList.remove('active');
-                    section.classList.add('hidden-content');
-                });
-
-                const clickedButton = document.querySelector(`.nav-tab-button[data-target="${targetId}"]`);
-                if (clickedButton) {
-                    clickedButton.classList.add('active');
-                }
-
-                const targetSection = document.getElementById(targetId);
-                if (targetSection) {
-                    targetSection.classList.remove('hidden-content');
-                    void targetSection.offsetWidth;
-                    targetSection.classList.add('active');
-                }
-            }
-
-            navButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const targetId = this.dataset.target;
-                    if (targetId === 'love-life-section') {
-                        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
-                    } else {
-                        showSection(targetId);
-                    }
-                });
-            });
-
-            showSection('about-me-section');
-        });
-    </script>
-    <script>
-        document.getElementById('site-footer').addEventListener('click', function () {
-            this.textContent = "Yayyy 🎉";
-            setTimeout(() => {
-                this.textContent = "Thanks for reading, Have a Wonderful Day!";
-            }, 2000);
-        });
-    </script>
-
-    <!-- Cozy Music Player Overlay -->
-    <div class="music-player-card" id="music-card">
-        <button id="play-pause-btn" class="control-btn big-btn">
-            <i class="material-icons">play_arrow</i>
-        </button>
-        <div class="track-info">
-            <span class="track-title">Snowfall</span>
-            <span class="track-artist">Øneheart</span>
-        </div>
-        <div class="volume-container">
-            <i class="material-icons" style="font-size: 18px; color: rgba(255,255,255,0.7)">volume_up</i>
-            <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.01" value="0.2">
-        </div>
-        <button id="hide-player-btn" class="hide-btn" title="Minimize">
-            <i class="material-icons" style="font-size: 20px;">expand_more</i>
-        </button>
+      </div>
     </div>
-    <button id="show-player-btn" class="show-player-btn" style="display:none;" title="Show Music Player">
-        <i class="material-icons">music_note</i>
-    </button>
 
-    <audio id="bg-music" loop>
-        <source
-            src="https://raw.githubusercontent.com/HarryRojr/HarryRojr.github.io/refs/heads/main/assets/snowfall.mp3"
-            type="audio/mpeg">
-    </audio>
+    <!-- About Me -->
+    <div class="card">
+      <div class="section-heading" id="about-me-heading"><span class="dot"></span>About me:</div>
+      <p>
+        I'm Harry Rojr — a human in body, a gamer at heart. My life's a 24/7 LAN party, minus the stale pizza (I
+        prefer snacks with flavor). I'm sniping in Call of Duty, sailing the seas and stealing the Chests of
+        Fortune, and parkouring through Assassin's Creed like it's my day job. Whether it's clutch moments in
+        Battlefield or trolling in Among Us, I'm the MVP you didn't see coming — and currently, I'm serving up L's
+        in Sea of Thieves and making people ragequit in TEKKEN 8. I'm nice in general tho! ;)
+      </p>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const music = document.getElementById('bg-music');
-            const playPauseBtn = document.getElementById('play-pause-btn');
-            const volumeSlider = document.getElementById('volume-slider');
-            const hideBtn = document.getElementById('hide-player-btn');
-            const showBtn = document.getElementById('show-player-btn');
-            const musicCard = document.getElementById('music-card');
-            const playIcon = playPauseBtn.querySelector('i');
+    <!-- Gamer Stats -->
+    <div class="card">
+      <div class="section-heading" id="stats-heading"><span class="dot"></span>Gamer Stats:</div>
+      <div class="stat-grid">
+        <div class="stat-card"><span class="stat-icon">🎮</span><span class="num">2,400+</span><span class="label">Hours Played</span></div>
+        <div class="stat-card"><span class="stat-icon">🏆</span><span class="num">Gold</span><span class="label">Highest Rank</span></div>
+        <div class="stat-card"><span class="stat-icon">📚</span><span class="num">47+</span><span class="label">Games Owned</span></div>
+        <div class="stat-card"><span class="stat-icon">☠️</span><span class="num">∞</span><span class="label">Ragequits Caused</span></div>
+        <div class="stat-card"><span class="stat-icon">🌊</span><span class="num">Sea of Thieves</span><span class="label">Current Obsession</span></div>
+        <div class="stat-card"><span class="stat-icon">🌙</span><span class="num">2 AM</span><span class="label">Avg. Bedtime</span></div>
+      </div>
+    </div>
 
-            music.volume = 0.2;
+    <!-- Games I Play -->
+    <div class="card">
+      <div class="section-heading" id="games-heading"><span class="dot"></span>Games I Play:</div>
+      <div class="game-grid">
+        <div class="game-card">
+          <div class="now-playing-badge"><div class="bars"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>Now</div>
+          <span class="gi">🏴‍☠️</span><h3>Sea of Thieves</h3><p>Serving L's and stealing Chests of Fortune. Arrr.</p><span class="tag">Adventure</span>
+        </div>
+        <div class="game-card"><span class="gi">🎯</span><h3>Call of Duty</h3><p>Sniping since day one. Don't push me.</p><span class="tag">FPS</span></div>
+        <div class="game-card"><span class="gi">🗡️</span><h3>Assassin's Creed</h3><p>Parkour is my cardio. No gym needed.</p><span class="tag">Action RPG</span></div>
+        <div class="game-card"><span class="gi">💣</span><h3>Battlefield</h3><p>Clutch moments only. No respawn needed.</p><span class="tag">FPS</span></div>
+        <div class="game-card"><span class="gi">🔪</span><h3>Among Us</h3><p>I'm always the Impostor. Always.</p><span class="tag">Social</span></div>
+        <div class="game-card"><span class="gi">👊</span><h3>TEKKEN 8</h3><p>Making people ragequit is a skill I've mastered.</p><span class="tag">Fighting</span></div>
+      </div>
+    </div>
 
-            function updateIcon() {
-                playIcon.textContent = music.paused ? 'play_arrow' : 'pause';
-                if (music.paused) playPauseBtn.classList.remove('playing');
-                else playPauseBtn.classList.add('playing');
-            }
+    <!-- PC Specs -->
+    <div class="card">
+      <div class="section-heading" id="specs-heading"><span class="dot"></span>My Setup:</div>
+      <div class="terminal-bar">
+        <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
+        <span>HarryRojr@gaming-rig ~ specs</span>
+      </div>
+      <div class="specs-grid">
+        <div class="spec-row"><span class="spec-key">CPU</span><span class="spec-val">AMD Ryzen 7 5800X</span></div>
+        <div class="spec-row"><span class="spec-key">Monitor</span><span class="spec-val">1440p 165Hz IPS</span></div>
+        <div class="spec-row"><span class="spec-key">GPU</span><span class="spec-val">RTX 3070 Ti</span></div>
+        <div class="spec-row"><span class="spec-key">Mouse</span><span class="spec-val">G Pro X Superlight</span></div>
+        <div class="spec-row"><span class="spec-key">RAM</span><span class="spec-val">32GB DDR4 3200MHz</span></div>
+        <div class="spec-row"><span class="spec-key">Keyboard</span><span class="spec-val">Keychron Q3 (Red)</span></div>
+        <div class="spec-row"><span class="spec-key">Storage</span><span class="spec-val">1TB NVMe SSD</span></div>
+        <div class="spec-row"><span class="spec-key">Headset</span><span class="spec-val">HyperX Cloud III</span></div>
+        <div class="spec-row"><span class="spec-key">OS</span><span class="spec-val">Windows 11</span></div>
+        <div class="spec-row"><span class="spec-key">Console</span><span class="spec-val">Xbox + PlayStation</span></div>
+      </div>
+    </div>
 
-            playPauseBtn.addEventListener('click', () => {
-                if (music.paused) music.play().catch(() => { });
-                else music.pause();
-                updateIcon();
-            });
+    <!-- Movies & Anime -->
+    <div class="card">
+      <div class="section-heading" id="videos-anime-heading"><span class="dot"></span>Movies &amp; Anime Obsession:</div>
+      <p>
+        When I'm not mashing buttons, I'm glued to videos, anime, shows, and movies, soaking it all in like a
+        sponge in a pixelated ocean. My watch history? A wild mix of people trolling killers in Dead by Daylight,
+        movies that keep me glued for hours, and anime so epic it makes my controller cry. I've binged Attack on
+        Titan faster than you can say "Titan yeet," even though I slept through the first two seasons (but hey,
+        the ending makes it all better). Whether it's a 3-hour-long movie, an anime marathon, or binging entire
+        seasons of shows, I'm here for it — even if Crunchyroll or Netflix aren't doing the honors themselves,
+        if you catch my drift.
+      </p>
+    </div>
 
-            volumeSlider.addEventListener('input', () => {
-                music.volume = volumeSlider.value;
-            });
+    <!-- Music & Manga -->
+    <div class="card">
+      <div class="section-heading" id="music-addiction-heading"><span class="dot"></span>Music &amp; Manga Addiction:</div>
+      <p>
+        If I'm not gaming or watching anime, you'll find me lost in comic books or manga with tunes blasting
+        louder than a Fortnite rocket launch. Music's my mana, keeping me powered up as I flip pages late into
+        the night. My playlist? A chaotic mix of hyped-up bass drops for epic moments, lo-fi beats for rainy
+        nights, and bass that hits right in the feels. From Ed Sheeran to Sia, I'm vibing harder than a creeper
+        at a rave. Always reading and listening on Spotify!
+      </p>
+    </div>
 
-            hideBtn.addEventListener('click', () => {
-                musicCard.classList.add('hidden');
-                showBtn.style.display = 'flex';
-            });
+    <!-- Connect -->
+    <div class="card">
+      <div class="section-heading" id="connect-with-me-heading"><span class="dot"></span>Connect with me:</div>
+      <p>
+        Wanna squad up, talk anime or movies, or roast my playlist? I'm everywhere, like a glitch in the Matrix.
+        Hit me up on Xbox, PlayStation, Twitter(X) or Reddit — but don't expect me to go easy on you in-game.
+        I'm as ruthless as a Dark Souls invader.
+      </p>
+    </div>
 
-            showBtn.addEventListener('click', () => {
-                musicCard.classList.remove('hidden');
-                showBtn.style.display = 'none';
-                updateIcon();
-            });
+  </div>
 
-            updateIcon();
-        });
-        //quack
-        const siteTitle = document.getElementById('site-title');
+  <!-- ══ SOCIALS ══ -->
+  <div id="socials-section" class="content-section">
+    <div class="card">
+      <div class="section-heading" id="find-me-online-heading"><span class="dot"></span>Find Me Online!</div>
+      <div class="socials-grid">
 
-        siteTitle.addEventListener('click', () => {
-            try {
-                // Create a fresh Audio object each click
-                const quack = new Audio('https://www.myinstants.com/media/sounds/quack_5.mp3');
-                quack.volume = 0.5;
-                quack.muted = false;
-                quack.play().then(() => {
-                    console.log("Quack played successfully!");
-                }).catch(err => {
-                    console.error("Quack failed:", err);
-                });
+        <a href="https://www.xbox.com/en-US/play/user/HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Xbox_one_logo.svg" alt="Xbox">
+          <span class="social-link-label">Xbox</span>
+        </a>
 
-                // Bounce effect
-                siteTitle.style.animation = 'quack-bounce 0.3s';
-                siteTitle.addEventListener('animationend', () => {
-                    siteTitle.style.animation = '';
-                }, { once: true });
+        <details>
+          <summary><div class="social-link">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/00/PlayStation_logo.svg" alt="PlayStation">
+            <span class="social-link-label">PlayStation</span>
+          </div></summary>
+          <div class="details-reveal">Username: <strong>HarryRojr</strong></div>
+        </details>
 
-            } catch (e) {
-                console.error("Unexpected error:", e);
-            }
-        });
-    </script>
-    <canvas id="snowfall-canvas" style="
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9998;
-"></canvas>
-    <script>
-        //SNOWFALL SCRIPT
-        document.addEventListener('DOMContentLoaded', function () {
-            // --- Canvas setup ---
-            const canvas = document.getElementById('snowfall-canvas');
-            const ctx = canvas.getContext('2d');
+        <details>
+          <summary><div class="social-link">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Epic_Games_logo.svg" alt="Epic Games">
+            <span class="social-link-label">Epic Games</span>
+          </div></summary>
+          <div class="details-reveal">Username: <strong>HarryRojr</strong></div>
+        </details>
 
-            let width = canvas.width = window.innerWidth;
-            let height = canvas.height = window.innerHeight;
+        <a href="https://x.com/HarryRojr/" class="social-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://about.x.com/content/dam/about-twitter/x/large-x-logo.png.twimg.768.png" alt="Twitter X">
+          <span class="social-link-label">Twitter (X)</span>
+        </a>
 
-            window.addEventListener('resize', () => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-            });
+        <a href="https://www.reddit.com/user/HarryRojr/" class="social-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Reddit_Logo_Icon.svg" alt="Reddit">
+          <span class="social-link-label">Reddit</span>
+        </a>
 
-            const numFlakes = 80;
-            const flakes = [];
+        <a href="https://open.spotify.com/user/27mruhq25lv2pvek3hs2ksi0t?si=b5e9fd6a937642cc" class="social-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
+          <span class="social-link-label">Spotify</span>
+        </a>
 
-            for (let i = 0; i < numFlakes; i++) {
-                flakes.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    size: Math.random() * 4 + 2,
-                    speed: Math.random() * 1.5 + 0.5
-                });
-            }
+        <a href="https://www.youtube.com/@HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube">
+          <span class="social-link-label">YouTube</span>
+        </a>
 
-            // --- Snow control ---
-            let snowAlpha = 0;       // current opacity
-            let targetAlpha = 0;     // fade target
-            let animationId;
+        <a href="https://www.twitch.tv/HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Twitch_Glitch_Logo_Purple.svg" alt="Twitch">
+          <span class="social-link-label">Twitch</span>
+        </a>
 
-            function drawFlakes() {
-                ctx.clearRect(0, 0, width, height);
-                ctx.fillStyle = `rgba(255,255,255,${snowAlpha})`;
-                flakes.forEach(f => {
-                    ctx.fillRect(f.x, f.y, f.size, f.size);
-                    f.y += f.speed;
-                    if (f.y > height) f.y = -f.size;
-                });
-            }
+        <details>
+          <summary><div class="social-link">
+            <img src="https://preview.redd.it/old-discord-logo-feeling-old-yet-v0-7enta5v0houc1.png?auto=webp&s=780eba64b34cc77e01abc8c0f9cc031a9801f441" alt="Discord">
+            <span class="social-link-label">Discord</span>
+          </div></summary>
+          <div class="details-reveal">Username: <strong>itsTheHR</strong></div>
+        </details>
 
-            function animateSnow() {
-                snowAlpha += (targetAlpha - snowAlpha) * 0.05; // smooth fade
-                drawFlakes();
-                animationId = requestAnimationFrame(animateSnow);
-            }
+        <a href="https://steamcommunity.com/id/HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam">
+          <span class="social-link-label">Steam</span>
+        </a>
 
-            animateSnow(); // start loop
+        <a href="https://my.play/HarryRojr" class="social-link" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_Play_2022_icon.svg/960px-Google_Play_2022_icon.svg.png" alt="Google Play Games">
+          <span class="social-link-label">Google Play Games</span>
+        </a>
 
-            function startSnow() { targetAlpha = 1; }
-            function stopSnow() { targetAlpha = 0; }
+      </div>
+    </div>
+  </div>
 
-            // --- Connect to music player ---
-            const music = document.getElementById('bg-music');
-            const playPauseBtn = document.getElementById('play-pause-btn');
+  <!-- ══ LOVE LIFE ══ -->
+  <div id="love-life-section" class="content-section">
+    <div class="card" style="text-align:center;">
+      <div class="section-heading" style="justify-content:center;width:100%;"><span class="dot"></span>My Love Life (Top Secret!)</div>
+      <p>This section is currently empty, as my love life is as mysterious as a hidden achievement in a new game. Stay tuned for future updates, or maybe not! 😉</p>
+      <p style="margin-top:0.75rem;">(Psst... check the "Love Life" tab in the header again if you're feeling brave!)</p>
+    </div>
+  </div>
 
-            playPauseBtn.addEventListener('click', () => {
-                setTimeout(() => {
-                    if (!music.paused) startSnow();
-                    else stopSnow();
-                }, 50);
-            });
+</main>
 
-            // Also trigger on initial play if needed
-            music.addEventListener('play', startSnow);
-            music.addEventListener('pause', stopSnow);
-        });
-    </script>
+<footer id="site-footer">Thanks for reading, Have a Wonderful Day!</footer>
 
+<!-- ── MUSIC PLAYER ── -->
+<div class="music-player-card" id="music-card">
+  <button id="play-pause-btn" class="ctrl-btn big" aria-label="Play/Pause">
+    <i class="material-icons">play_arrow</i>
+  </button>
+  <div class="track-info">
+    <div class="track-row">
+      <span class="track-title">Snowfall</span>
+      <div class="eq-bars" id="eq-bars">
+        <div class="eq-bar"></div><div class="eq-bar"></div>
+        <div class="eq-bar"></div><div class="eq-bar"></div>
+      </div>
+    </div>
+    <span class="track-artist">Øneheart</span>
+  </div>
+  <div class="vol-wrap">
+    <i class="material-icons" style="font-size:16px;color:var(--muted);">volume_up</i>
+    <input type="range" id="volume-slider" class="vol-slider" min="0" max="1" step="0.01" value="0.2">
+  </div>
+  <button id="hide-player-btn" class="ctrl-btn" aria-label="Minimize" style="width:30px;height:30px;">
+    <i class="material-icons" style="font-size:18px;">expand_more</i>
+  </button>
+</div>
+
+<button id="show-player-btn" class="show-player-btn" aria-label="Show music player">
+  <i class="material-icons">music_note</i>
+</button>
+
+<audio id="bg-music" loop>
+  <source src="https://raw.githubusercontent.com/HarryRojr/HarryRojr.github.io/refs/heads/main/assets/snowfall.mp3" type="audio/mpeg">
+</audio>
+
+<canvas id="snowfall-canvas"></canvas>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ── SCROLL BAR ──
+  const scrollBar = document.getElementById('scroll-bar');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const max = document.body.scrollHeight - window.innerHeight;
+    scrollBar.style.width = max > 0 ? (scrolled / max * 100) + '%' : '0%';
+  });
+
+  // ── TAB NAVIGATION ──
+  const navBtns  = document.querySelectorAll('.nav-links button');
+  const sections = document.querySelectorAll('.content-section');
+
+  function showSection(targetId) {
+    navBtns.forEach(b => b.classList.remove('active'));
+    sections.forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
+    const btn = document.querySelector(`.nav-links button[data-target="${targetId}"]`);
+    if (btn) btn.classList.add('active');
+    const sec = document.getElementById(targetId);
+    if (sec) { sec.style.display = 'block'; void sec.offsetWidth; sec.classList.add('active'); }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const t = this.dataset.target;
+      if (t === 'love-life-section') {
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+      } else { showSection(t); }
+    });
+  });
+
+  showSection('home-section');
+
+  // ── BOUNCY HEADINGS ──
+  const eggs = {
+    'about-me-heading':        ['About me:',                  "Yes, It's really about me!"],
+    'stats-heading':           ['Gamer Stats:',               "Yeah yeah, I have no life 😂"],
+    'games-heading':           ['Games I Play:',              "Yes, I have no life. And?"],
+    'specs-heading':           ['My Setup:',                  "Don't touch my rig. I mean it."],
+    'videos-anime-heading':    ['Movies & Anime Obsession:',  "I haven't slept for days cuz of that y'know"],
+    'music-addiction-heading': ['Music & Manga Addiction:',   "I'm such an addict, send help!"],
+    'connect-with-me-heading': ['Connect with me:',           "I can see you, you little stalker ;)"],
+    'find-me-online-heading':  ['Find Me Online!',            "I'm everywhere"],
+  };
+
+  Object.entries(eggs).forEach(([id, [orig, alt]]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('click', () => {
+      const textNode = el.lastChild;
+      if (!textNode) return;
+      textNode.textContent = ' ' + alt;
+      el.classList.add('popped', 'bounce-anim');
+      el.addEventListener('animationend', () => {
+        el.classList.remove('bounce-anim');
+        setTimeout(() => { textNode.textContent = ' ' + orig; el.classList.remove('popped'); }, 1800);
+      }, { once: true });
+    });
+  });
+
+  // ── FOOTER ──
+  const footer = document.getElementById('site-footer');
+  footer.addEventListener('click', function () {
+    this.textContent = 'Yayyy 🎉';
+    setTimeout(() => { this.textContent = 'Thanks for reading, Have a Wonderful Day!'; }, 2000);
+  });
+
+  // ── QUACK ──
+  document.getElementById('site-title').addEventListener('click', () => {
+    try {
+      const q = new Audio('https://www.myinstants.com/media/sounds/quack_5.mp3');
+      q.volume = 0.5;
+      q.play().catch(() => {});
+      const t = document.getElementById('site-title');
+      t.style.animation = 'quack-bounce 0.4s ease';
+      t.addEventListener('animationend', () => { t.style.animation = ''; }, { once: true });
+    } catch (e) {}
+  });
+
+  // ── MUSIC PLAYER ──
+  const music     = document.getElementById('bg-music');
+  const ppBtn     = document.getElementById('play-pause-btn');
+  const volSlider = document.getElementById('volume-slider');
+  const hideBtn   = document.getElementById('hide-player-btn');
+  const showBtn   = document.getElementById('show-player-btn');
+  const musicCard = document.getElementById('music-card');
+  const playIcon  = ppBtn.querySelector('i');
+  const eqBars    = document.querySelectorAll('.eq-bar');
+
+  music.volume = 0.2;
+
+  function syncUI() {
+    playIcon.textContent = music.paused ? 'play_arrow' : 'pause';
+    ppBtn.classList.toggle('playing', !music.paused);
+    eqBars.forEach(b => b.classList.toggle('visible', !music.paused));
+  }
+
+  ppBtn.addEventListener('click', () => {
+    music.paused ? music.play().catch(() => {}) : music.pause();
+    syncUI();
+  });
+
+  volSlider.addEventListener('input', () => { music.volume = volSlider.value; });
+  hideBtn.addEventListener('click',   () => { musicCard.classList.add('hidden'); showBtn.style.display = 'flex'; });
+  showBtn.addEventListener('click',   () => { musicCard.classList.remove('hidden'); showBtn.style.display = 'none'; syncUI(); });
+
+  music.addEventListener('play',  syncUI);
+  music.addEventListener('pause', syncUI);
+  syncUI();
+
+  // ── SNOWFALL ──
+  const canvas = document.getElementById('snowfall-canvas');
+  const ctx    = canvas.getContext('2d');
+  let w = canvas.width = window.innerWidth;
+  let h = canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; });
+
+  const flakes = Array.from({ length: 80 }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    size: Math.random() * 4 + 2,
+    speed: Math.random() * 1.4 + 0.5,
+  }));
+
+  let snowAlpha = 0, targetAlpha = 0;
+
+  (function animateSnow() {
+    snowAlpha += (targetAlpha - snowAlpha) * 0.05;
+    ctx.clearRect(0, 0, w, h);
+    if (snowAlpha > 0.01) {
+      ctx.fillStyle = `rgba(255,255,255,${snowAlpha})`;
+      flakes.forEach(f => {
+        ctx.fillRect(f.x, f.y, f.size, f.size);
+        f.y += f.speed;
+        if (f.y > h) f.y = -f.size;
+      });
+    }
+    requestAnimationFrame(animateSnow);
+  })();
+
+  music.addEventListener('play',  () => { targetAlpha = 1; });
+  music.addEventListener('pause', () => { targetAlpha = 0; });
+
+});
+</script>
 </body>
-
 </html>
